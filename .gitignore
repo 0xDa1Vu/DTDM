@@ -12,7 +12,11 @@ Thumbs.db
 
 # PHP
 /vendor/
-composer.lock
 
 # Docker volume dump (nếu có)
 /database/pgdata/
+
+# Local backups and generated experiment output (publish reviewed evidence only)
+/backups/
+/storage/
+/node_modules/

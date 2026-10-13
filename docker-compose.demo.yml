@@ -1,0 +1,40 @@
+name: dtdm_demo
+services:
+  web:
+    build: ./docker
+    ports:
+      - "127.0.0.1:8010:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      APP_ENV: local
+      APP_URL: http://localhost:8010
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: catalog_demo
+      DB_USER: demo
+      DB_PASS: demo_local_only
+      SEPAY_API_KEY: demo-local-webhook-key
+      SEPAY_ACCOUNT_NUMBER: "0000000000"
+      SEPAY_ACCOUNT_NAME: DEMO KHONG CHUYEN TIEN
+      SEPAY_BANK: MBBank
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: catalog_demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demo_local_only
+      MYSQL_ROOT_PASSWORD: demo_root_local_only
+    volumes:
+      - demo_mysql:/var/lib/mysql
+      - ./database/mysql_import.sql:/docker-entrypoint-initdb.d/01-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_PASSWORD mysql -h 127.0.0.1 -u $$MYSQL_USER -D $$MYSQL_DATABASE -e 'SELECT 1' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+volumes:
+  demo_mysql:

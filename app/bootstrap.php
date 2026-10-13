@@ -9,7 +9,10 @@ spl_autoload_register(function (string $class) {
         return;
     }
     $relative = substr($class, strlen($prefix));
-    $file = __DIR__ . '/' . str_replace('\\', '/', $relative) . '.php';
+    $parts = explode('\\', $relative);
+    // Namespace App\\Core maps to app/core on case-sensitive Linux filesystems.
+    $parts[0] = strtolower($parts[0]);
+    $file = __DIR__ . '/' . implode('/', $parts) . '.php';
     if (is_file($file)) {
         require $file;
     }
