@@ -20,3 +20,5 @@ Thumbs.db
 /backups/
 /storage/
 /node_modules/
+__pycache__/
+*.pyc

@@ -1,4 +1,20 @@
-# ATELIER — Website bán hàng thời trang
+# DTDM — NoSQL Product Catalog & CAP
+
+Đồ án Điện toán đám mây tái sử dụng website ATELIER. Catalog dùng MongoDB Replica
+Set 3 node; MySQL giữ tồn kho, đơn hàng và thanh toán. Môi trường demo độc lập
+ở http://localhost:8010, không dùng volume/database của project LTW cũ.
+
+- [Setup trên máy hiện tại](docs/setup.md)
+- [Tiến độ và phần chưa kiểm thử](docs/progress.md)
+- [Mô hình NoSQL và đồng bộ giao dịch](docs/nosql/catalog-design.md)
+- [Backup và migration](docs/nosql/local-demo.md)
+- [CAP Dashboard](docs/cap/dashboard.md)
+
+**Chưa chạy thí nghiệm partition/recovery; chưa có kết luận CAP từ số liệu thực.**
+
+---
+
+# ATELIER — Tài liệu website MySQL gốc
 
 Đồ án môn **Lập trình Web**. Website thương mại điện tử thời trang gồm **trang khách** và **trang quản trị (Admin)**: CRUD đầy đủ, đăng nhập/đăng xuất/phân quyền, giỏ hàng, đặt hàng, đánh giá và dashboard thống kê. Giao diện tối giản, hiện đại, responsive.
 
@@ -90,7 +106,9 @@ Yêu cầu: đã cài **XAMPP** (Apache + MySQL + phpMyAdmin).
 
 ### Nạp lại dữ liệu (re-import)
 
-`mysql_import.sql` tự `DROP TABLE` trước khi tạo lại, nên chạy lại file này bất cứ lúc nào là an toàn — chỉ cần import lại là schema + dữ liệu về đúng trạng thái ban đầu.
+`mysql_import.sql` có `DROP TABLE`: import lại sẽ xoá dữ liệu hiện tại. Chỉ dùng
+để khởi tạo database mới, không dùng để cập nhật database đang sử dụng. Backup
+và kiểm tra restore trước mọi thao tác migration.
 
 ## Chạy bằng Docker
 
@@ -112,12 +130,8 @@ docker compose up -d --build
 
 ### Nạp lại dữ liệu (re-seed) trong Docker
 
-Init script chỉ chạy khi volume dữ liệu còn trống. Muốn nạp lại từ đầu:
-
-```bash
-docker compose down -v      # xoá volume mysqldata
-docker compose up -d --build
-```
+Init script chỉ chạy khi volume dữ liệu còn trống. Không xoá volume để cập nhật
+schema hoặc chạy đồ án mới. Dùng stack demo riêng theo docs/setup.md.
 
 ## Tài khoản demo
 

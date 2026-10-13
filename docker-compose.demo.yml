@@ -2,7 +2,7 @@ name: dtdm_demo
 services:
   web:
     build: ./docker
-    command: ["sh", "-c", "composer install --no-interaction && exec apache2-foreground"]
+    command: ["sh", "-c", "composer install --no-interaction && mkdir -p storage/cap && chmod 0777 storage/cap && touch storage/cap/experiments.jsonl && chmod 0666 storage/cap/experiments.jsonl && exec apache2-foreground"]
     ports:
       - "127.0.0.1:8010:80"
     volumes:

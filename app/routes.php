@@ -70,6 +70,13 @@ $router->post('/coupon/apply', [CouponController::class, 'apply']);
 $router->get('/admin', [DashboardController::class, 'index']);
 $router->get('/admin/stats', [DashboardController::class, 'stats']);
 
+// Local demo only; each action also checks admin authorization and environment.
+$router->get('/admin/cap', [\App\Controllers\Admin\CapController::class, 'index']);
+$router->get('/admin/cap/status', [\App\Controllers\Admin\CapController::class, 'status']);
+$router->post('/admin/cap/probe', [\App\Controllers\Admin\CapController::class, 'probe']);
+$router->get('/admin/cap/logs', [\App\Controllers\Admin\CapController::class, 'logs']);
+$router->get('/admin/cap/export', [\App\Controllers\Admin\CapController::class, 'export']);
+
 $router->get('/admin/products', [AdminProduct::class, 'index']);
 $router->get('/admin/products/create', [AdminProduct::class, 'create']);
 $router->post('/admin/products/store', [AdminProduct::class, 'store']);

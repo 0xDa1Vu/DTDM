@@ -19,6 +19,7 @@ $flash = Session::takeFlash();
         <a href="/admin">Dashboard</a>
         <a href="/admin/products">Sản phẩm</a>
         <a href="/admin/categories">Danh mục</a>
+        <?php if (cfg('cap_demo')): ?><a href="/admin/cap">Thực nghiệm CAP</a><?php endif; ?>
         <a href="/admin/orders">Đơn hàng</a>
         <a href="/admin/users">Người dùng</a>
         <a href="/admin/reviews">Đánh giá</a>
