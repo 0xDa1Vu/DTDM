@@ -23,6 +23,18 @@ bash scripts/demo.sh ps
 Database đã được seed/migrate trên máy hiện tại. **Không import lại SQL hoặc xoá
 volume để setup lại.** Source gốc và database LTW/XAMPP không bị thay đổi.
 
+## Port và cấu hình môi trường
+
+Cấu hình `.env` và `.env.example` của DTDM dùng APP_URL `http://localhost:8010`,
+DB_HOST `db`, DB_PORT `3306`, DB_NAME `catalog_demo`. Tên `db` và các tên `mongoN`
+chỉ được phân giải trong mạng Docker; không chạy PHP trực tiếp trên macOS bằng
+cấu hình này. CAP_DEMO_ENABLED=0 trong file để mặc định tắt; Compose demo bật 1.
+
+`APP_URL` là URL ứng dụng, không tự thay đổi port publish của Docker. Mapping
+thực tế nằm trong `docker-compose.demo.yml`: `127.0.0.1:8010:80`.
+`docker-compose.yml` còn lưu cấu hình LTW cũ tại 8000; dùng `bash scripts/demo.sh`
+để luôn chọn đúng stack DTDM. File `.env` riêng tư không được push GitHub.
+
 ## Xem dữ liệu MongoDB từ Terminal
 
 ```bash

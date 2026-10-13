@@ -10,6 +10,7 @@ services:
     environment:
       APP_ENV: local
       APP_URL: http://localhost:8010
+      VNP_RETURN_URL: http://localhost:8010/payment/vnpay/return
       DB_HOST: db
       DB_PORT: 3306
       DB_NAME: catalog_demo

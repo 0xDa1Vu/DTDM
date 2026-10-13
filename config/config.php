@@ -34,7 +34,7 @@ return [
         'database' => env('MONGODB_DATABASE', 'catalog_demo'),
     ],
     'cap_demo' => env('CAP_DEMO_ENABLED', '0') === '1' && env('APP_ENV', 'local') === 'local',
-    'app_url' => env('APP_URL', 'http://localhost:8000'),
+    'app_url' => env('APP_URL', 'http://localhost:8010'),
     'app_env' => env('APP_ENV', 'local'),
     'db' => [
         'host' => env('DB_HOST', '127.0.0.1'),
@@ -47,7 +47,7 @@ return [
         'tmn_code'    => env('VNP_TMN_CODE', ''),
         'hash_secret' => env('VNP_HASH_SECRET', ''),
         'url'         => env('VNP_URL', 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'),
-        'return_url'  => env('VNP_RETURN_URL', 'http://localhost:8000/payment/vnpay/return'),
+        'return_url'  => env('VNP_RETURN_URL', rtrim(env('APP_URL', 'http://localhost:8010'), '/') . '/payment/vnpay/return'),
     ],
     // SePay (chuyen khoan QR). Webhook SePay goi ve /payment/sepay/webhook
     // kem header "Authorization: Apikey <api_key>" de xac thuc.
