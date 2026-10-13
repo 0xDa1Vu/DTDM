@@ -1,4 +1,7 @@
 <?php use App\Core\Csrf; ?>
+<?php if (!empty($pendingSync)): ?>
+<p role="alert">Có <?= (int) $pendingSync ?> thay đổi catalog đang chờ đồng bộ. Sản phẩm liên quan tạm thời chưa thể đặt hàng. Quản trị viên cần chạy quy trình đồng bộ trong hướng dẫn demo.</p>
+<?php endif; ?>
 <div class="admin-toolbar">
     <a href="/admin/products/create" class="btn btn-dark">+ Thêm sản phẩm</a>
 </div>

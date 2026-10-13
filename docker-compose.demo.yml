@@ -19,7 +19,7 @@ services:
       SEPAY_ACCOUNT_NUMBER: "0000000000"
       SEPAY_ACCOUNT_NAME: DEMO KHONG CHUYEN TIEN
       SEPAY_BANK: MBBank
-      CATALOG_DRIVER: ${DEMO_CATALOG_DRIVER:-mysql}
+      CATALOG_DRIVER: ${DEMO_CATALOG_DRIVER:-mongodb}
       MONGODB_URI: mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rsCatalog
       MONGODB_DATABASE: catalog_demo
       CAP_DEMO_ENABLED: "1"

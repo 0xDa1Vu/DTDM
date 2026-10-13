@@ -10,6 +10,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Variant;
 use App\Models\ProductImage;
+use App\Core\MongoDatabase;
+use App\Services\CatalogService;
 
 class ProductController extends Controller
 {
@@ -19,6 +21,7 @@ class ProductController extends Controller
         $this->view('admin/products/index', [
             'title'    => 'Quản lý sản phẩm',
             'products' => (new Product())->all(),
+            'pendingSync' => MongoDatabase::enabled() ? MongoDatabase::db()->catalog_events->countDocuments(['applied' => false]) : 0,
         ], 'admin');
     }
 
@@ -39,6 +42,10 @@ class ProductController extends Controller
     {
         Auth::requireRole('admin');
         Csrf::verify();
+        if (MongoDatabase::enabled()) {
+            $this->saveMongo(null);
+            return;
+        }
         $id = (new Product())->create($this->payload());
         $this->saveVariants($id);
         $this->saveImages($id);
@@ -65,6 +72,10 @@ class ProductController extends Controller
     {
         Auth::requireRole('admin');
         Csrf::verify();
+        if (MongoDatabase::enabled()) {
+            $this->saveMongo((int) $id);
+            return;
+        }
         (new Product())->modify((int) $id, $this->payload());
         // Thay toàn bộ variant (đơn giản cho đồ án)
         (new Variant())->deleteForProduct((int) $id);
@@ -118,6 +129,7 @@ class ProductController extends Controller
         Auth::requireRole('admin');
         header('Content-Type: application/json');
         $body = json_decode(file_get_contents('php://input'), true);
+        if (!Csrf::check($body['_csrf'] ?? null)) { $this->json(['ok' => false], 403); }
         $ids  = array_filter((array)($body['ids'] ?? []), 'is_numeric');
         if ($ids) {
             (new ProductImage())->reorder(array_values($ids));
@@ -128,6 +140,30 @@ class ProductController extends Controller
 
     // ---- helpers ----
 
+    private function saveMongo(?int $id): void
+    {
+        $variants = [];
+        foreach ((array) ($_POST['v_size'] ?? []) as $i => $size) {
+            if (trim((string) $size) === '' && trim((string) ($_POST['v_color'][$i] ?? '')) === '') continue;
+            $row = ['id' => $_POST['v_id'][$i] ?? 0, 'size' => $size,
+                'color' => $_POST['v_color'][$i] ?? '', 'stock' => $_POST['v_stock'][$i] ?? 0];
+            if (isset($_POST['v_original_stock'][$i]) && $_POST['v_original_stock'][$i] !== '') $row['original_stock'] = $_POST['v_original_stock'][$i];
+            $variants[] = $row;
+        }
+        try {
+            $payload = $this->payload();
+            if ($id) $payload['version'] = (int) ($_POST['catalog_version'] ?? 0);
+            $savedId = (new CatalogService())->saveProduct($id, $payload, $variants);
+            $this->saveImages($savedId);
+            Session::flash('success', 'Đã lưu catalog MongoDB và đồng bộ dữ liệu giao dịch.');
+            $this->redirect('/admin/products/edit/' . $savedId);
+        } catch (\Throwable $e) {
+            error_log((string) $e);
+            Session::flash('error', $e instanceof \MongoDB\Driver\Exception\Exception ? 'Không thể lưu MongoDB: kiểm tra slug, dữ liệu hoặc kết nối; tải lại danh sách trước khi thử tiếp.' : $e->getMessage());
+            $this->redirect($id ? '/admin/products/edit/' . $id : '/admin/products');
+        }
+    }
+
     private function payload(): array
     {
         $name = $this->input('name');
@@ -136,7 +172,7 @@ class ProductController extends Controller
             'name'        => $name,
             'slug'        => $this->input('slug') ?: Str::slug($name) . '-' . substr(uniqid(), -4),
             'description' => $this->input('description'),
-            'price'       => (float) $this->input('price'),
+            'price'       => $this->input('price'),
             'sale_price'  => $this->input('sale_price'),
             'brand'       => $this->input('brand'),
             'status'      => $this->input('status') === 'hidden' ? 'hidden' : 'active',

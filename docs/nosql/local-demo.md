@@ -37,3 +37,17 @@ Migration bảo toàn ID, Decimal128 cho tiền, UTCDateTime cho ngày. Không �
 vào document: tồn kho vẫn do MySQL quản lý. Có thể chạy lại nếu nguồn/đích chưa
 bị sửa; nếu document đích khác nguồn, script dừng thay vì ghi đè. Verify so sánh
 toàn bộ nội dung chuẩn hóa và số lượng, dành cho thời điểm trước cutover.
+
+Sau migration:
+
+```bash
+bash scripts/demo.sh exec -T web php scripts/sync-catalog.php
+DEMO_CATALOG_DRIVER=mongodb bash scripts/demo.sh up -d web
+bash scripts/demo.sh exec -T web php tests/catalog.php
+bash scripts/demo.sh exec -T web php tests/concurrent-checkout.php
+python3 tests/web-smoke.py
+```
+
+Compose demo mặc định dùng MongoDB; nếu cần lấy baseline trước migration, khởi
+động với `DEMO_CATALOG_DRIVER=mysql bash scripts/demo.sh up -d --build`.
+Stack Docker LTW cũ vẫn mặc định MySQL, không tự đổi driver.

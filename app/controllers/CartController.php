@@ -43,6 +43,9 @@ class CartController extends Controller
         if (!$variant) {
             $this->json(['ok' => false, 'message' => 'Sản phẩm không tồn tại.'], 404);
         }
+        if (\App\Core\MongoDatabase::enabled() && \App\Services\CatalogProjectionService::version('products', (int) $variant['product_id']) !== $variant['catalog_version']) {
+            $this->json(['ok' => false, 'message' => 'Sản phẩm đang đồng bộ. Vui lòng thử lại sau.'], 503);
+        }
         if ($variant['stock'] < $qty) {
             $this->json(['ok' => false, 'message' => 'Không đủ hàng trong kho.'], 422);
         }
@@ -61,9 +64,8 @@ class CartController extends Controller
         Csrf::verify();
         $cartItemId = (int) $this->input('cart_item_id');
         $qty = max(1, (int) $this->input('quantity', 1));
-        $this->cart->updateItem($cartItemId, $qty);
-
         $cart = $this->currentCart();
+        $this->cart->updateItem($cartItemId, $qty, (int) $cart['id']);
         $items = $this->cart->items((int) $cart['id']);
         $total = array_sum(array_map(fn($i) => $i['price'] * $i['quantity'], $items));
         $line = null;
@@ -79,8 +81,8 @@ class CartController extends Controller
     {
         Csrf::verify();
         $cartItemId = (int) $this->input('cart_item_id');
-        $this->cart->removeItem($cartItemId);
         $cart = $this->currentCart();
+        $this->cart->removeItem($cartItemId, (int) $cart['id']);
         $items = $this->cart->items((int) $cart['id']);
         $total = array_sum(array_map(fn($i) => $i['price'] * $i['quantity'], $items));
         $this->json([

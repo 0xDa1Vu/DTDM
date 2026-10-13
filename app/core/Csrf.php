@@ -31,7 +31,7 @@ class Csrf
     public static function verify(): void
     {
         if (!self::check($_POST['_csrf'] ?? null)) {
-            http_response_code(419);
+            http_response_code(403);
             exit('CSRF token không hợp lệ. Vui lòng tải lại trang.');
         }
     }

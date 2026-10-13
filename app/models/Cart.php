@@ -34,6 +34,22 @@ class Cart extends Model
     /** Các item trong giỏ kèm thông tin variant + sản phẩm + giá hiệu lực */
     public function items(int $cartId): array
     {
+        if (\App\Core\MongoDatabase::enabled()) {
+            $stmt = $this->db->prepare('SELECT ci.id AS cart_item_id, ci.quantity, ci.variant_id, v.product_id, v.size, v.color FROM cart_items ci JOIN variants v ON v.id = ci.variant_id WHERE ci.cart_id = ? ORDER BY ci.id');
+            $stmt->execute([$cartId]);
+            $rows = $stmt->fetchAll(); $repo = new \App\Repositories\MongoCatalogRepository();
+            foreach ($rows as &$row) {
+                $variant = $repo->variant((int) $row['variant_id']);
+                $row['available'] = $variant !== null;
+                $row['product_name'] = $variant['product_name'] ?? 'Sản phẩm ngừng bán — vui lòng xoá khỏi giỏ';
+                $row['slug'] = $variant['product_slug'] ?? '';
+                $row['price'] = $variant ? ($variant['sale_price'] ?? $variant['price']) : '0.00';
+                $row['stock'] = $variant['stock'] ?? 0;
+                $row['image'] = $variant['image'] ?? null;
+                $row['catalog_version'] = $variant['catalog_version'] ?? 0;
+            }
+            unset($row); return $rows;
+        }
         $sql = "SELECT ci.id AS cart_item_id, ci.quantity, ci.variant_id,
                        v.size, v.color, v.stock,
                        p.id AS product_id, p.name AS product_name, p.slug,
@@ -61,16 +77,16 @@ class Cart extends Model
         $stmt->execute(['cid' => $cartId, 'vid' => $variantId, 'q' => $qty]);
     }
 
-    public function updateItem(int $cartItemId, int $qty): void
+    public function updateItem(int $cartItemId, int $qty, int $cartId): void
     {
-        $stmt = $this->db->prepare('UPDATE cart_items SET quantity = :q WHERE id = :id');
-        $stmt->execute(['q' => max(1, $qty), 'id' => $cartItemId]);
+        $stmt = $this->db->prepare('UPDATE cart_items SET quantity = :q WHERE id = :id AND cart_id = :cid');
+        $stmt->execute(['q' => max(1, $qty), 'id' => $cartItemId, 'cid' => $cartId]);
     }
 
-    public function removeItem(int $cartItemId): void
+    public function removeItem(int $cartItemId, int $cartId): void
     {
-        $stmt = $this->db->prepare('DELETE FROM cart_items WHERE id = :id');
-        $stmt->execute(['id' => $cartItemId]);
+        $stmt = $this->db->prepare('DELETE FROM cart_items WHERE id = :id AND cart_id = :cid');
+        $stmt->execute(['id' => $cartItemId, 'cid' => $cartId]);
     }
 
     public function clear(int $cartId): void

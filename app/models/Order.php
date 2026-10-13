@@ -16,6 +16,18 @@ class Order extends Model
         $variantModel = new Variant();
         $this->db->beginTransaction();
         try {
+            // Lock projection versions in stable order for concurrent checkout/update.
+            if (\App\Core\MongoDatabase::enabled()) {
+                $versions = [];
+                foreach ($items as $item) {
+                    if (empty($item['available']) || (int) $item['quantity'] <= 0) throw new \RuntimeException('Giỏ có sản phẩm ngừng bán hoặc số lượng không hợp lệ.');
+                    $versions[(int) $item['product_id']] = (int) $item['catalog_version'];
+                }
+                ksort($versions);
+                foreach ($versions as $pid => $version) {
+                    if (\App\Services\CatalogProjectionService::version('products', $pid, true) !== $version) throw new \RuntimeException('Catalog đang thay đổi/đồng bộ. Tải lại giỏ trước khi đặt hàng.');
+                }
+            }
             $total = 0;
             foreach ($items as $it) {
                 $total += $it['price'] * $it['quantity'];

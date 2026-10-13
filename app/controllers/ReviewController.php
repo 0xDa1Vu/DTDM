@@ -24,6 +24,10 @@ class ReviewController extends Controller
             Session::flash('error', 'Dữ liệu đánh giá không hợp lệ.');
             $this->redirect('/');
         }
+        if (\App\Core\MongoDatabase::enabled() && \App\Services\CatalogProjectionService::version('products', $productId) !== $product['version']) {
+            Session::flash('error', 'Sản phẩm đang đồng bộ. Thử lại sau.');
+            $this->redirect('/product/' . $product['slug']);
+        }
 
         (new Review())->upsert($productId, Auth::id(), $rating, $comment);
         Session::flash('success', 'Cảm ơn bạn đã đánh giá!');

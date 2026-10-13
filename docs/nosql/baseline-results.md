@@ -21,3 +21,17 @@ Không sử dụng database production hoặc volume LTW.
 
 Đây là baseline/migration, **chưa phải kết quả CAP**. Chưa kiểm chứng thanh toán
 thật, chưa chạy stress test hoặc triển khai cloud nhiều máy.
+
+## Sau tích hợp catalog MongoDB
+
+Đã chạy tests/catalog.php: 14 kiểm tra qua, gồm CRUD sản phẩm/ảnh embedded,
+escape regex, rollback thiếu kho, quyền sở hữu cart, snapshot giá đơn, bảo toàn
+ID biến thể và tồn kho khi sửa catalog, replay event, optimistic version,
+ẩn sản phẩm/ngăn mua. tests/concurrent-checkout.php chạy hai process đặt mua
+cùng một đơn vị tồn kho: một thành công, một bị từ chối thiếu kho; tồn còn 0.
+Đây là phép kiểm tra cạnh tranh hai request, không phải stress benchmark.
+
+tests/web-smoke.py qua: trang khách/tìm kiếm/lọc, đăng nhập admin, các trang
+quản trị, chi tiết sản phẩm, form biến thể và từ chối thiếu CSRF. Trong runtime
+Apache này status 419 bị truyền ra thành 500; đã đổi lỗi CSRF sang HTTP 403 và
+kiểm tra lại thành công. Lỗi placeholder tìm kiếm SQL cũ cũng đã được sửa.

@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $productModel = new Product();
         $product = $productModel->findBySlug($slug);
-        if (!$product) {
+        if (!$product || $product['status'] !== 'active') {
             (new HomeController())->notFound();
             return;
         }

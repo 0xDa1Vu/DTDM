@@ -2,6 +2,8 @@
 namespace App\Models;
 
 use App\Core\Model;
+use App\Core\MongoDatabase;
+use App\Repositories\MongoCatalogRepository;
 
 class Variant extends Model
 {
@@ -9,6 +11,7 @@ class Variant extends Model
 
     public function forProduct(int $productId): array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->variants($productId); }
         $stmt = $this->db->prepare(
             'SELECT * FROM variants WHERE product_id = :pid ORDER BY size, color'
         );
@@ -19,6 +22,7 @@ class Variant extends Model
     /** Variant kèm thông tin sản phẩm (dùng cho giỏ hàng) */
     public function withProduct(int $variantId): ?array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->variant($variantId); }
         $sql = "SELECT v.*, p.name AS product_name, p.slug AS product_slug,
                        p.price, p.sale_price,
                        (SELECT image_url FROM product_images pi
@@ -52,6 +56,7 @@ class Variant extends Model
     /** Trừ kho an toàn (chỉ trừ nếu còn đủ); trả về true nếu thành công */
     public function decreaseStock(int $variantId, int $qty): bool
     {
+        if ($qty <= 0) throw new \InvalidArgumentException("Số lượng phải dương.");
         $stmt = $this->db->prepare(
             'UPDATE variants SET stock = stock - :q1
              WHERE id = :id AND stock >= :q2'

@@ -2,10 +2,29 @@
 namespace App\Models;
 
 use App\Core\Model;
+use App\Core\MongoDatabase;
+use App\Repositories\MongoCatalogRepository;
+use App\Services\CatalogService;
 
 class Product extends Model
 {
     protected string $table = 'products';
+
+    public function find(int $id): ?array
+    {
+        return MongoDatabase::enabled() ? (new MongoCatalogRepository())->find('products', $id) : parent::find($id);
+    }
+
+    public function all(string $orderBy = 'id DESC'): array
+    {
+        return MongoDatabase::enabled() ? (new MongoCatalogRepository())->all('products', ['deleted' => ['$ne' => true]]) : parent::all($orderBy);
+    }
+
+    public function delete(int $id): bool
+    {
+        return MongoDatabase::enabled() ? (new CatalogService())->delete('products', $id) : parent::delete($id);
+    }
+
 
     /** Ảnh chính của sản phẩm (sub-query tiện cho danh sách) */
     private const PRIMARY_IMAGE_SQL =
@@ -20,6 +39,7 @@ class Product extends Model
      */
     public function browse(array $f): array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->browse($f); }
         $where  = ["p.status = 'active'"];
         $params = [];
 
@@ -28,8 +48,8 @@ class Product extends Model
             $params['cat'] = (int) $f['category_id'];
         }
         if (!empty($f['q'])) {
-            $where[] = '(p.name LIKE :q OR p.brand LIKE :q)';
-            $params['q'] = '%' . $f['q'] . '%';
+            $where[] = '(p.name LIKE :q_name OR p.brand LIKE :q_brand)';
+            $params['q_name'] = $params['q_brand'] = '%' . $f['q'] . '%';
         }
         if (isset($f['min_price']) && $f['min_price'] !== '') {
             $where[] = 'COALESCE(p.sale_price, p.price) >= :minp';
@@ -99,6 +119,7 @@ class Product extends Model
 
     public function featured(int $limit = 8): array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->all('products', ['status' => 'active', 'is_featured' => true], ['created_at' => -1, '_id' => -1], $limit); }
         $sql = "SELECT p.*, " . self::PRIMARY_IMAGE_SQL . "
                 FROM products p WHERE p.status = 'active' AND p.is_featured = true
                 ORDER BY p.created_at DESC LIMIT :lim";
@@ -110,6 +131,7 @@ class Product extends Model
 
     public function bestSellers(int $limit = 8): array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->bestSellers($limit); }
         $sql = "SELECT p.*, " . self::PRIMARY_IMAGE_SQL . ",
                        COALESCE(SUM(oi.quantity), 0) AS sold
                 FROM products p
@@ -127,6 +149,7 @@ class Product extends Model
 
     public function findBySlug(string $slug): ?array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->bySlug('products', $slug); }
         $stmt = $this->db->prepare('SELECT * FROM products WHERE slug = :slug');
         $stmt->execute(['slug' => $slug]);
         return $stmt->fetch() ?: null;
@@ -134,6 +157,7 @@ class Product extends Model
 
     public function withCategory(int $id): ?array
     {
+        if (MongoDatabase::enabled()) { return (new MongoCatalogRepository())->withCategory($id); }
         $sql = "SELECT p.*, c.name AS category_name, c.slug AS category_slug
                 FROM products p
                 LEFT JOIN categories c ON c.id = p.category_id
@@ -145,6 +169,7 @@ class Product extends Model
 
     public function create(array $d): int
     {
+        if (MongoDatabase::enabled()) { return (new CatalogService())->saveProduct(null, $d); }
         return $this->insert([
             'category_id' => $d['category_id'] ?: null,
             'name'        => $d['name'],
@@ -159,6 +184,7 @@ class Product extends Model
 
     public function modify(int $id, array $d): bool
     {
+        if (MongoDatabase::enabled()) { (new CatalogService())->saveProduct($id, $d); return true; }
         return $this->update($id, [
             'category_id' => $d['category_id'] ?: null,
             'name'        => $d['name'],
@@ -175,6 +201,7 @@ class Product extends Model
     /** ID sản phẩm bán chạy nhất (dùng để gắn badge BEST SELLER) */
     public function bestSellerIds(int $limit = 8): array
     {
+        if (MongoDatabase::enabled()) { return array_column((new MongoCatalogRepository())->bestSellers($limit, true), 'id'); }
         $sql = "SELECT p.id
                 FROM products p
                 JOIN variants v ON v.product_id = p.id
@@ -193,12 +220,14 @@ class Product extends Model
     /** Danh sách size/color phân biệt để dựng bộ lọc */
     public function distinctSizes(): array
     {
+        if (MongoDatabase::enabled()) { $v = MongoDatabase::db()->products->distinct('variants.size', ['status' => 'active']); sort($v); return $v; }
         return $this->db->query("SELECT DISTINCT size FROM variants ORDER BY size")
                         ->fetchAll(\PDO::FETCH_COLUMN);
     }
 
     public function distinctColors(): array
     {
+        if (MongoDatabase::enabled()) { $v = MongoDatabase::db()->products->distinct('variants.color', ['status' => 'active']); sort($v); return $v; }
         return $this->db->query("SELECT DISTINCT color FROM variants ORDER BY color")
                         ->fetchAll(\PDO::FETCH_COLUMN);
     }

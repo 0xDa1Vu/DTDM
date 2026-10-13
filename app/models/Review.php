@@ -42,6 +42,14 @@ class Review extends Model
 
     public function allWithRefs(): array
     {
+        if (\App\Core\MongoDatabase::enabled()) {
+            $rows = $this->db->query('SELECT r.*, u.name AS user_name FROM reviews r JOIN users u ON u.id = r.user_id ORDER BY r.created_at DESC')->fetchAll();
+            $ids = array_values(array_unique(array_map('intval', array_column($rows, 'product_id'))));
+            $products = (new \App\Repositories\MongoCatalogRepository())->all('products', ['_id' => ['$in' => $ids]]);
+            $names = array_column($products, 'name', 'id');
+            foreach ($rows as &$row) $row['product_name'] = $names[$row['product_id']] ?? 'Sản phẩm ngừng bán';
+            unset($row); return $rows;
+        }
         return $this->db->query(
             "SELECT r.*, u.name AS user_name, p.name AS product_name
              FROM reviews r

@@ -38,7 +38,7 @@
     addRowBtn.addEventListener('click', function () {
       var tr = document.createElement('tr');
       tr.innerHTML =
-        '<td><input type="text" name="v_size[]" value=""></td>' +
+        '<td><input type="hidden" name="v_id[]" value="0"><input type="hidden" name="v_original_stock[]" value=""><input type="text" name="v_size[]" value=""></td>' +
         '<td><input type="text" name="v_color[]" value=""></td>' +
         '<td><input type="number" name="v_stock[]" value="0"></td>' +
         '<td><button type="button" class="link-btn danger">✕</button></td>';

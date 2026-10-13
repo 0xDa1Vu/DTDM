@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $stats = [
             'revenue'  => (float) $db->query("SELECT COALESCE(SUM(total),0) FROM orders WHERE status != 'cancelled'")->fetchColumn(),
             'orders'   => (int) $db->query("SELECT COUNT(*) FROM orders")->fetchColumn(),
-            'products' => (int) $db->query("SELECT COUNT(*) FROM products")->fetchColumn(),
+            'products' => \App\Core\MongoDatabase::enabled() ? \App\Core\MongoDatabase::db()->products->countDocuments(['deleted' => ['$ne' => true]]) : (int) $db->query("SELECT COUNT(*) FROM products")->fetchColumn(),
             'users'    => (int) $db->query("SELECT COUNT(*) FROM users WHERE role = 'customer'")->fetchColumn(),
         ];
 

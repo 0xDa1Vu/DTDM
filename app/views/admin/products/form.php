@@ -6,6 +6,7 @@ $action = $isEdit ? '/admin/products/update/' . (int) $product['id'] : '/admin/p
 <div class="admin-form">
 <form id="main-form" action="<?= $action ?>" method="post" enctype="multipart/form-data">
     <?= Csrf::field() ?>
+    <input type="hidden" name="catalog_version" value="<?= (int) ($product['version'] ?? 0) ?>">
     <div class="form-grid">
         <label>Tên sản phẩm
             <input type="text" name="name" value="<?= e($product['name'] ?? '') ?>" required>
@@ -49,7 +50,7 @@ $action = $isEdit ? '/admin/products/update/' . (int) $product['id'] : '/admin/p
     </label>
 
     <h3>Biến thể (size / màu / tồn kho)</h3>
-    <p class="hint"><?= $isEdit ? 'Lưu ý: lưu sẽ thay toàn bộ biến thể bên dưới.' : '' ?></p>
+    <p class="hint"><?= \App\Core\MongoDatabase::enabled() ? 'ID biến thể được giữ ổn định. Thay đổi tồn kho là điều chỉnh tăng/giảm so với số đang hiển thị; đơn mua phát sinh đồng thời vẫn được tính. Đổi size/màu bằng cách thêm dòng mới.' : ($isEdit ? 'Lưu sẽ thay toàn bộ biến thể bên dưới.' : '') ?></p>
     <table class="variant-table" id="variantTable">
         <thead><tr><th>Size</th><th>Màu</th><th>Tồn kho</th><th></th></tr></thead>
         <tbody>
@@ -57,7 +58,7 @@ $action = $isEdit ? '/admin/products/update/' . (int) $product['id'] : '/admin/p
         $rows = !empty($variants) ? $variants : [['size'=>'','color'=>'','stock'=>'']];
         foreach ($rows as $v): ?>
             <tr>
-                <td><input type="text" name="v_size[]" value="<?= e($v['size']) ?>"></td>
+                <td><input type="hidden" name="v_id[]" value="<?= (int) ($v['id'] ?? 0) ?>"><input type="hidden" name="v_original_stock[]" value="<?= e($v['stock']) ?>"><input type="text" name="v_size[]" value="<?= e($v['size']) ?>"></td>
                 <td><input type="text" name="v_color[]" value="<?= e($v['color']) ?>"></td>
                 <td><input type="number" name="v_stock[]" value="<?= e($v['stock']) ?>"></td>
                 <td><button type="button" class="link-btn danger" onclick="this.closest('tr').remove()">✕</button></td>
@@ -121,7 +122,7 @@ Sortable.create(document.getElementById('sortableImages'), {
         fetch('/admin/products/image/reorder', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ ids })
+            body: JSON.stringify({ ids, _csrf: <?= json_encode(Csrf::token()) ?> })
         });
     }
 });
