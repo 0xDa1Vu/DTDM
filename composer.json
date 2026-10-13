@@ -1,0 +1,12 @@
+{
+  "name": "dtdm/nosql-cap-catalog",
+  "description": "ATELIER catalog and local MongoDB CAP experiments",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*",
+    "ext-mongodb": "2.5.0",
+    "mongodb/mongodb": "2.5.0"
+  },
+  "config": {"sort-packages": true}
+}

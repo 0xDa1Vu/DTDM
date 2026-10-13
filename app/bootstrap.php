@@ -3,6 +3,10 @@
  * Bootstrap: autoloader PSR-4 đơn giản + khởi tạo session.
  * Namespace App\  ->  thư mục app/
  */
+$vendor = dirname(__DIR__) . '/vendor/autoload.php';
+if (is_file($vendor)) {
+    require_once $vendor;
+}
 spl_autoload_register(function (string $class) {
     $prefix = 'App\\';
     if (!str_starts_with($class, $prefix)) {

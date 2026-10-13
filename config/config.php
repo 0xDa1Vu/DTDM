@@ -28,6 +28,12 @@ if (!function_exists('env')) {
 }
 
 return [
+    'catalog_driver' => env('CATALOG_DRIVER', 'mysql'),
+    'mongo' => [
+        'uri' => env('MONGODB_URI', 'mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rsCatalog'),
+        'database' => env('MONGODB_DATABASE', 'catalog_demo'),
+    ],
+    'cap_demo' => env('CAP_DEMO_ENABLED', '0') === '1' && env('APP_ENV', 'local') === 'local',
     'app_url' => env('APP_URL', 'http://localhost:8000'),
     'app_env' => env('APP_ENV', 'local'),
     'db' => [

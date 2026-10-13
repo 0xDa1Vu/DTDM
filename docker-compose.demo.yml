@@ -2,6 +2,7 @@ name: dtdm_demo
 services:
   web:
     build: ./docker
+    command: ["sh", "-c", "composer install --no-interaction && exec apache2-foreground"]
     ports:
       - "127.0.0.1:8010:80"
     volumes:
@@ -18,6 +19,11 @@ services:
       SEPAY_ACCOUNT_NUMBER: "0000000000"
       SEPAY_ACCOUNT_NAME: DEMO KHONG CHUYEN TIEN
       SEPAY_BANK: MBBank
+      CATALOG_DRIVER: ${DEMO_CATALOG_DRIVER:-mysql}
+      MONGODB_URI: mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rsCatalog
+      MONGODB_DATABASE: catalog_demo
+      CAP_DEMO_ENABLED: "1"
+      COMPOSER_ALLOW_SUPERUSER: "1"
     depends_on:
       db:
         condition: service_healthy
@@ -36,5 +42,36 @@ services:
       interval: 5s
       timeout: 5s
       retries: 30
+  mongo1: &mongo
+    build: ./docker/mongo
+    command: ["mongod", "--replSet", "rsCatalog", "--bind_ip_all", "--wiredTigerCacheSizeGB", "0.25"]
+    cap_add: [NET_ADMIN]
+    volumes:
+      - demo_mongo1:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand({ping:1})"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  mongo2:
+    <<: *mongo
+    volumes:
+      - demo_mongo2:/data/db
+  mongo3:
+    <<: *mongo
+    volumes:
+      - demo_mongo3:/data/db
+  mongo-init:
+    image: mongo:8.0
+    volumes:
+      - ./docker/mongo/init-replica.js:/init-replica.js:ro
+    entrypoint: ["mongosh", "--host", "mongo1", "--quiet", "/init-replica.js"]
+    depends_on:
+      mongo1: {condition: service_healthy}
+      mongo2: {condition: service_healthy}
+      mongo3: {condition: service_healthy}
 volumes:
   demo_mysql:
+  demo_mongo1:
+  demo_mongo2:
+  demo_mongo3:

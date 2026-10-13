@@ -2,8 +2,10 @@ FROM php:8.2-apache
 
 # Cài extension MySQL (PDO) cho PHP
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends default-mysql-client \
+    && apt-get install -y --no-install-recommends default-mysql-client libssl-dev unzip git \
     && docker-php-ext-install pdo pdo_mysql mysqli \
+    && pecl install mongodb-2.5.0 \
+    && docker-php-ext-enable mongodb \
     && rm -rf /var/lib/apt/lists/*
 
 # Bật mod_rewrite cho .htaccess (route về front controller)
@@ -19,3 +21,5 @@ RUN printf '<Directory ${APACHE_DOCUMENT_ROOT}>\n    AllowOverride All\n    Requ
     && a2enconf zz-override
 
 WORKDIR /var/www/html
+
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
