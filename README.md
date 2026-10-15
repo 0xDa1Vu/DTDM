@@ -10,7 +10,7 @@ Set 3 node; MySQL giữ tồn kho, đơn hàng và thanh toán. Môi trường d
 - [Backup và migration](docs/nosql/local-demo.md)
 - [CAP Dashboard](docs/cap/dashboard.md)
 
-**Đã kiểm thử partition/election/recovery trên Docker demo ([bằng chứng](docs/cap/network-validation.md)). Chưa chạy đầy đủ ma trận đọc/ghi để kết luận CAP.**
+**Đã chạy bốn giai đoạn CAP với ma trận đọc/ghi đại diện: [kết quả thực tế và giới hạn](docs/cap/matrix-results.md). Đã recovery cụm demo.**
 
 ---
 

@@ -1,0 +1,111 @@
+{
+  "environment_after_run": {
+    "version": "8.0.32",
+    "config": {
+      "_id": "rsCatalog",
+      "version": 1,
+      "term": 20,
+      "members": [
+        {
+          "_id": 0,
+          "host": "mongo1:27017",
+          "arbiterOnly": false,
+          "buildIndexes": true,
+          "hidden": false,
+          "priority": 1,
+          "tags": {},
+          "secondaryDelaySecs": {
+            "high": 0,
+            "low": 0,
+            "unsigned": false
+          },
+          "votes": 1
+        },
+        {
+          "_id": 1,
+          "host": "mongo2:27017",
+          "arbiterOnly": false,
+          "buildIndexes": true,
+          "hidden": false,
+          "priority": 1,
+          "tags": {},
+          "secondaryDelaySecs": {
+            "high": 0,
+            "low": 0,
+            "unsigned": false
+          },
+          "votes": 1
+        },
+        {
+          "_id": 2,
+          "host": "mongo3:27017",
+          "arbiterOnly": false,
+          "buildIndexes": true,
+          "hidden": false,
+          "priority": 1,
+          "tags": {},
+          "secondaryDelaySecs": {
+            "high": 0,
+            "low": 0,
+            "unsigned": false
+          },
+          "votes": 1
+        }
+      ],
+      "protocolVersion": {
+        "high": 0,
+        "low": 1,
+        "unsigned": false
+      },
+      "writeConcernMajorityJournalDefault": true,
+      "settings": {
+        "chainingAllowed": true,
+        "heartbeatIntervalMillis": 2000,
+        "heartbeatTimeoutSecs": 10,
+        "electionTimeoutMillis": 10000,
+        "catchUpTimeoutMillis": -1,
+        "catchUpTakeoverDelayMillis": 30000,
+        "getLastErrorModes": {},
+        "getLastErrorDefaults": {
+          "w": 1,
+          "wtimeout": 0
+        },
+        "replicaSetId": "6ace13c15c5c8bd44f9f3762"
+      }
+    }
+  },
+  "rollback_logs": {
+    "mongo1": [],
+    "mongo2": [],
+    "mongo3": [
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21098,   \"ctx\":\"BackgroundSync\",\"msg\":\"Starting rollback due to fetcher error\",\"attr\":{\"error\":\"OplogStartMissing: the sync source's oplog and our oplog have diverged, going into rollback. our last optime fetched: { ts: Timestamp(1792041445, 2), t: 19 }. optime of first document in batch: { ts: Timestamp(1792041455, 1), t: 20 }. sync source's first optime: { ts: Timestamp(1791890369, 1), t: -1 }\",\"lastCommittedOpTime\":{\"ts\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}},\"t\":19}}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21102,   \"ctx\":\"BackgroundSync\",\"msg\":\"Rollback using 'recoverToStableTimestamp' method\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21104,   \"ctx\":\"BackgroundSync\",\"msg\":\"Scheduling rollback\",\"attr\":{\"syncSource\":\"mongo2:27017\"}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21593,   \"ctx\":\"BackgroundSync\",\"msg\":\"Transition to ROLLBACK\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21340,   \"ctx\":\"BackgroundSync\",\"msg\":\"State transition ops metrics\",\"attr\":{\"metrics\":{\"lastStateTransition\":\"rollback\",\"totalOpsKilled\":5,\"totalOpsRunning\":34}}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21358,   \"ctx\":\"BackgroundSync\",\"msg\":\"Replica set state transition\",\"attr\":{\"newState\":\"ROLLBACK\",\"oldState\":\"SECONDARY\"}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.496+00:00\"},\"s\":\"I\",  \"c\":\"-\",        \"id\":4939300, \"ctx\":\"monitoring-keys-for-HMAC\",\"msg\":\"Failed to refresh key cache\",\"attr\":{\"error\":\"InterruptedDueToReplStateChange: Cannot refresh keys collection cache during rollback\",\"nextWakeupMillis\":200}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.497+00:00\"},\"s\":\"I\",  \"c\":\"-\",        \"id\":4939300, \"ctx\":\"monitoring-keys-for-HMAC\",\"msg\":\"Failed to refresh key cache\",\"attr\":{\"error\":\"InterruptedDueToReplStateChange: Cannot refresh keys collection cache during rollback\",\"nextWakeupMillis\":400}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.497+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21606,   \"ctx\":\"BackgroundSync\",\"msg\":\"Finding common point\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.504+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21607,   \"ctx\":\"BackgroundSync\",\"msg\":\"Rollback common point\",\"attr\":{\"commonPointOpTime\":{\"ts\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}},\"t\":19}}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.505+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21532,   \"ctx\":\"BackgroundSync\",\"msg\":\"Incremented the rollback ID\",\"attr\":{\"rbid\":2}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.505+00:00\"},\"s\":\"I\",  \"c\":\"STORAGE\",  \"id\":20658,   \"ctx\":\"BackgroundSync\",\"msg\":\"Stopping index builds before rollback\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.508+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21595,   \"ctx\":\"BackgroundSync\",\"msg\":\"Waiting for all background operations to complete before starting rollback\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.508+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21597,   \"ctx\":\"BackgroundSync\",\"msg\":\"Finished waiting for background operations to complete before rollback\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.508+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21604,   \"ctx\":\"BackgroundSync\",\"msg\":\"Finding record store counts\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.508+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21609,   \"ctx\":\"BackgroundSync\",\"msg\":\"Preparing to write deleted documents to a rollback file\",\"attr\":{\"namespace\":\"cap_demo.probes\",\"uuid\":\"eb9c9407-1ce3-4241-8015-1a381cb17553\",\"file\":\"/data/db/rollback/eb9c9407-1ce3-4241-8015-1a381cb17553/removed.2026-10-15T05-17-42.0.bson\"}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.605+00:00\"},\"s\":\"I\",  \"c\":\"STORAGE\",  \"id\":7474902, \"ctx\":\"BackgroundSync\",\"msg\":\"Shutting down oplog cap maintainer thread\",\"attr\":{\"reason\":{\"code\":11602,\"codeName\":\"InterruptedDueToReplStateChange\",\"errmsg\":\"Rollback in progress.\"}}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.609+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":23991,   \"ctx\":\"BackgroundSync\",\"msg\":\"Rolling back to the stable timestamp\",\"attr\":{\"stableTimestamp\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}},\"initialDataTimestamp\":{\"$timestamp\":{\"t\":1791890369,\"i\":1}}}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.661+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":9529900, \"ctx\":\"BackgroundSync\",\"msg\":\"Rolling back to the stable timestamp completed by storage engine\",\"attr\":{\"attempts\":0}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.679+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":6984700, \"ctx\":\"BackgroundSync\",\"msg\":\"Operations reverted by rollback\",\"attr\":{\"insert\":2,\"update\":0,\"delete\":0,\"insertGlobalIndexKey\":0,\"deleteGlobalIndexKey\":0}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.684+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21600,   \"ctx\":\"BackgroundSync\",\"msg\":\"Marking to truncate all oplog entries with timestamps greater than common point\",\"attr\":{\"commonPoint\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}}}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21404,   \"ctx\":\"BackgroundSync\",\"msg\":\"Not updating committed snapshot because we are in rollback\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21610,   \"ctx\":\"BackgroundSync\",\"msg\":\"Triggering the rollback op observer\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21592,   \"ctx\":\"BackgroundSync\",\"msg\":\"Rollback complete\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21612,   \"ctx\":\"BackgroundSync\",\"msg\":\"Rollback summary\",\"attr\":{\"startTime\":{\"$date\":\"2026-10-15T05:17:42.496Z\"},\"endTime\":{\"$date\":\"2026-10-15T05:17:42.685Z\"},\"syncSource\":\"mongo2:27017\",\"rollbackDataFileDirectory\":\"/data/db/rollback/eb9c9407-1ce3-4241-8015-1a381cb17553\",\"rbid\":2,\"lastOptimeRolledBack\":{\"ts\":{\"$timestamp\":{\"t\":1792041445,\"i\":2}},\"t\":19},\"commonPoint\":{\"ts\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}},\"t\":19},\"lastWallClockTimeRolledBack\":{\"$date\":\"2026-10-15T05:17:25.338Z\"},\"firstOpWallClockTimeAfterCommonPoint\":{\"$date\":\"2026-10-15T05:17:25.205Z\"},\"wallClockTimeDiff\":0,\"truncateTimestamp\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}},\"stableTimestamp\":{\"$timestamp\":{\"t\":1792041443,\"i\":1}},\"shardIdentityRolledBack\":false,\"configServerConfigVersionRolledBack\":false,\"affectedSessions\":[],\"affectedNamespaces\":[\"cap_demo.probes\"],\"affectedUUIDs\":[{\"uuid\":{\"$uuid\":\"eb9c9407-1ce3-4241-8015-1a381cb17553\"}}],\"rollbackCommandCounts\":{\"insert\":2},\"totalEntriesRolledBackIncludingNoops\":2}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"ROLLBACK\", \"id\":21611,   \"ctx\":\"BackgroundSync\",\"msg\":\"Transition to SECONDARY\"}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21358,   \"ctx\":\"BackgroundSync\",\"msg\":\"Replica set state transition\",\"attr\":{\"newState\":\"SECONDARY\",\"oldState\":\"ROLLBACK\"}}",
+      "{\"t\":{\"$date\":\"2026-10-15T05:17:42.685+00:00\"},\"s\":\"I\",  \"c\":\"REPL\",     \"id\":21105,   \"ctx\":\"BackgroundSync\",\"msg\":\"Rollback successful\"}"
+    ]
+  }
+}

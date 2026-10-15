@@ -74,4 +74,4 @@ thông tin thanh toán thật vào demo. Compose dùng thông số database demo
 
 Đã chạy HTTP smoke, catalog CRUD, checkout cạnh tranh hai process, replication
 đọc/ghi trên mạng bình thường và [partition/election/recovery](cap/network-validation.md).
-Chưa chạy đầy đủ ma trận đọc/ghi khi phân vùng để kết luận CAP. QR demo dùng số giả; không chuyển tiền thật.
+Đã chạy [ma trận CAP đại diện và đối soát sau recovery](cap/matrix-results.md). QR demo dùng số giả; không chuyển tiền thật.

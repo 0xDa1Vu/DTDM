@@ -46,7 +46,7 @@ python3 scripts/cap/network.py recover
 Script không dừng tiến trình mongod. Recovery chỉ xoá chain DTDM_CAP, không flush
 firewall chung. Các kiểm tra container label/network hạn chế tác động vào stack
 khác. Đã kiểm thử partition hai chiều, election và recovery. Timeout TCP đã
-được kiểm tra; ma trận timeout/thành công của thao tác đọc/ghi còn ở nhiệm vụ sau.
+được kiểm tra; [ma trận đọc/ghi và đối soát recovery](matrix-results.md) đã chạy thực tế.
 
 ## Cách diễn giải
 
@@ -54,7 +54,8 @@ Read concern majority không bảo đảm luôn mới nhất và không tương 
 linearizable. w:1 không cho Secondary nhận ghi tuỳ ý. Timeout ghi không chứng
 minh không có ghi; dùng operation ID và đọc lại sau recovery. Các probe hiện ghi
 đè cùng key để quan sát giá trị cũ/mới; đối soát lịch sử nhiều ghi cần key riêng
-hoặc runner theo dõi mọi operation ID ở giai đoạn thực nghiệm tiếp theo.
+hoặc runner theo dõi mọi operation ID. `tests/cap-matrix.py` thực hiện đối soát đó,
+phân biệt ghi bị thay thế có chủ đích với ghi không còn tồn tại sau recovery.
 
 Tham khảo: https://www.mongodb.com/docs/manual/core/replica-set-elections/
 và https://www.mongodb.com/docs/manual/reference/read-concern-linearizable/

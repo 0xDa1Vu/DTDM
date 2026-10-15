@@ -1,0 +1,3106 @@
+{
+  "run_id": "matrix-20261015T051721Z-b25cec",
+  "started_at": "2026-10-15T05:17:21.494665+00:00",
+  "base_commit": "58c83ab39320f632fb115289d768d33a556ecdf8",
+  "source_sha256": {
+    "tests/cap-matrix.py": "abd821db84590ef39754bbf48ea8761a8599ad0c1609824c7c840411f5dd6676",
+    "tests/cap-network.py": "e36e48f62750ad9398f440cfae5483dba6c30b37aefe2d081f1824bd001374a3",
+    "scripts/cap/network.py": "954913e67595087957b6cc74ac15d21a21da448b97fafbd59c06564011f95595",
+    "app/services/CapExperimentService.php": "fda61882240e5c951c4d875111b505a699191604ce29c915bfbf3cdc17e830ee"
+  },
+  "probes": [
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "b6bddc15019c0584bb67d201",
+      "started_at": "2026-10-15T05:17:23+00:00",
+      "target": "replica",
+      "connection": "replicaSet",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": "before-partition",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "server": "mongo3",
+      "result": {
+        "acknowledged": true,
+        "matched": 0,
+        "upserted": 1
+      },
+      "ok": true,
+      "elapsed_ms": 3.522,
+      "finished_at": "2026-10-15T05:17:23+00:00",
+      "phase": "normal",
+      "label": "seed-shared"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "025109ae65ac02ad66f75ef3",
+      "started_at": "2026-10-15T05:17:23+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "b6bddc15019c0584bb67d201",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "before-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041443077"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.536,
+      "finished_at": "2026-10-15T05:17:23+00:00",
+      "phase": "normal",
+      "label": "replication-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "0f877408f5728159891b7958",
+      "started_at": "2026-10-15T05:17:23+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "b6bddc15019c0584bb67d201",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "before-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041443077"
+          }
+        }
+      },
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.415,
+      "finished_at": "2026-10-15T05:17:23+00:00",
+      "phase": "normal",
+      "label": "replication-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "77b11151abeb17877b9d4c25",
+      "started_at": "2026-10-15T05:17:23+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "b6bddc15019c0584bb67d201",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "before-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041443077"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.399,
+      "finished_at": "2026-10-15T05:17:23+00:00",
+      "phase": "normal",
+      "label": "replication-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "24a3b8a94a7fb8a47983a16f",
+      "started_at": "2026-10-15T05:17:25+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-transition-1",
+      "value": "transition-1",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "1",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "server": "mongo3",
+      "result": {
+        "acknowledged": true,
+        "matched": 0,
+        "upserted": 1
+      },
+      "ok": true,
+      "elapsed_ms": 1.836,
+      "finished_at": "2026-10-15T05:17:25+00:00",
+      "phase": "transition",
+      "label": "isolated-write-1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "3787e4bfc7787b729a83b094",
+      "started_at": "2026-10-15T05:17:25+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-transition-majority",
+      "value": "transition-majority",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "ok": false,
+      "error": {
+        "type": "MongoDB\\Driver\\Exception\\BulkWriteException",
+        "code": 64,
+        "message": "waiting for replication timed out"
+      },
+      "write_outcome": "unconfirmed; inspect operation_id after recovery",
+      "server": "mongo3",
+      "elapsed_ms": 2016.524,
+      "finished_at": "2026-10-15T05:17:27+00:00",
+      "phase": "transition",
+      "label": "isolated-write-majority"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "5fcd4820f689aa92ba92fd5d",
+      "started_at": "2026-10-15T05:17:38+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": "after-election",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "server": "mongo1",
+      "result": {
+        "acknowledged": true,
+        "matched": 1,
+        "upserted": 0
+      },
+      "ok": true,
+      "elapsed_ms": 3.659,
+      "finished_at": "2026-10-15T05:17:38+00:00",
+      "phase": "settling",
+      "label": "update-shared"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "b9b77ac86f47907b147f5109",
+      "started_at": "2026-10-15T05:17:38+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-w1",
+      "value": "stable-partition",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "1",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "ok": false,
+      "error": {
+        "type": "MongoDB\\Driver\\Exception\\BulkWriteException",
+        "code": 10107,
+        "message": "not primary"
+      },
+      "write_outcome": "unconfirmed; inspect operation_id after recovery",
+      "server": "mongo3",
+      "elapsed_ms": 1.352,
+      "finished_at": "2026-10-15T05:17:38+00:00",
+      "phase": "partition",
+      "label": "mongo3-write-1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "ab51e8fb9ad710b58288e22b",
+      "started_at": "2026-10-15T05:17:38+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-wmajority",
+      "value": "stable-partition",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "ok": false,
+      "error": {
+        "type": "MongoDB\\Driver\\Exception\\BulkWriteException",
+        "code": 10107,
+        "message": "not primary"
+      },
+      "write_outcome": "unconfirmed; inspect operation_id after recovery",
+      "server": "mongo3",
+      "elapsed_ms": 1.407,
+      "finished_at": "2026-10-15T05:17:38+00:00",
+      "phase": "partition",
+      "label": "mongo3-write-majority"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "d6fec31cce93273fde6ef16e",
+      "started_at": "2026-10-15T05:17:38+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "local",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "b6bddc15019c0584bb67d201",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "before-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041443077"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 2.777,
+      "finished_at": "2026-10-15T05:17:38+00:00",
+      "phase": "partition",
+      "label": "mongo3-secondaryPreferred-local",
+      "freshness": "stale"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "bd36d82ea0fdcb3d623b7970",
+      "started_at": "2026-10-15T05:17:38+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "b6bddc15019c0584bb67d201",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "before-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041443077"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 4.334,
+      "finished_at": "2026-10-15T05:17:38+00:00",
+      "phase": "partition",
+      "label": "mongo3-secondaryPreferred-majority",
+      "freshness": "stale"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "b9ec063372bc585a1bf80a8c",
+      "started_at": "2026-10-15T05:17:38+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "primary",
+      "read_concern": "linearizable",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "ok": false,
+      "error": {
+        "type": "MongoDB\\Driver\\Exception\\CommandException",
+        "code": 10107,
+        "message": "cannot satisfy linearizable read concern on non-primary node"
+      },
+      "write_outcome": null,
+      "elapsed_ms": 2.528,
+      "finished_at": "2026-10-15T05:17:38+00:00",
+      "phase": "partition",
+      "label": "mongo3-primary-linearizable"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "886f4c5a2849954bfae31009",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+      "value": "stable-partition",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "1",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "server": "mongo1",
+      "result": {
+        "acknowledged": true,
+        "matched": 0,
+        "upserted": 1
+      },
+      "ok": true,
+      "elapsed_ms": 2.214,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "mongo1-write-1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "59a7db948b88f6c424a40e02",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "write",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+      "value": "stable-partition",
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": null,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "server": "mongo1",
+      "result": {
+        "acknowledged": true,
+        "matched": 0,
+        "upserted": 1
+      },
+      "ok": true,
+      "elapsed_ms": 3.975,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "mongo1-write-majority"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "1358978793d01f4f8acf13aa",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "local",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.415,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "mongo1-secondaryPreferred-local",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "48f258d2ee4c64cb0fce95aa",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.364,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "mongo1-secondaryPreferred-majority",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "d13e91f15160dd91d807a151",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "primary",
+      "read_concern": "linearizable",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 15.211,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "mongo1-primary-linearizable",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "a1eb7fe2dcef495a67a8b240",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "replica",
+      "connection": "replicaSet",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "primary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 2.126,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "replica-primary",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "bc3923dc001439c74847bd25",
+      "started_at": "2026-10-15T05:17:39+00:00",
+      "target": "replica",
+      "connection": "replicaSet",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondary",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "b6bddc15019c0584bb67d201",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "before-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041443077"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 3.15,
+      "finished_at": "2026-10-15T05:17:39+00:00",
+      "phase": "partition",
+      "label": "replica-secondary",
+      "freshness": "stale"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "ceee943393b0cf008c63e98d",
+      "started_at": "2026-10-15T05:17:40+00:00",
+      "target": "replica",
+      "connection": "replicaSet",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "primaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.841,
+      "finished_at": "2026-10-15T05:17:40+00:00",
+      "phase": "partition",
+      "label": "replica-primaryPreferred",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "05ec4e5cbb994af376d74f73",
+      "started_at": "2026-10-15T05:17:40+00:00",
+      "target": "replica",
+      "connection": "replicaSet",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.88,
+      "finished_at": "2026-10-15T05:17:40+00:00",
+      "phase": "partition",
+      "label": "replica-secondaryPreferred",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "e030219d27251bb99e1300ba",
+      "started_at": "2026-10-15T05:17:40+00:00",
+      "target": "replica",
+      "connection": "replicaSet",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "nearest",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.637,
+      "finished_at": "2026-10-15T05:17:40+00:00",
+      "phase": "partition",
+      "label": "replica-nearest",
+      "freshness": "latest"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "ed7b31ef48ab21b6594fcfd6",
+      "started_at": "2026-10-15T05:17:46+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+        "operation_id": "886f4c5a2849954bfae31009",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "stable-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041459082"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.555,
+      "finished_at": "2026-10-15T05:17:46+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "6d44277367109540c80f8090",
+      "started_at": "2026-10-15T05:17:46+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+        "operation_id": "886f4c5a2849954bfae31009",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "stable-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041459082"
+          }
+        }
+      },
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.341,
+      "finished_at": "2026-10-15T05:17:46+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "af3245cfb3cc132f648030ef",
+      "started_at": "2026-10-15T05:17:46+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-mongo1-w1",
+        "operation_id": "886f4c5a2849954bfae31009",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "stable-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041459082"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.435,
+      "finished_at": "2026-10-15T05:17:46+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "e2927f85ab0a150197f072b8",
+      "started_at": "2026-10-15T05:17:46+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+        "operation_id": "59a7db948b88f6c424a40e02",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "stable-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041459218"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.277,
+      "finished_at": "2026-10-15T05:17:46+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "eac3ae46449362a9265273b7",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+        "operation_id": "59a7db948b88f6c424a40e02",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "stable-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041459218"
+          }
+        }
+      },
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 4.202,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "5d15642e261a64569a378a44",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-mongo1-wmajority",
+        "operation_id": "59a7db948b88f6c424a40e02",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "stable-partition",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041459218"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.329,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "71378a7821daa8f3061ff7ab",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-w1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.328,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "3544af5f51d466af4bdbdc18",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-w1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.439,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "690f91c65c2393f599733630",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-w1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.339,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "5d7555eaa2d1250cc4555e70",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-wmajority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.848,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "d0b0f63308224b9ca6e5797b",
+      "started_at": "2026-10-15T05:17:47+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-wmajority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.336,
+      "finished_at": "2026-10-15T05:17:47+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "90482e7a3f9990c57c5dd6dc",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-mongo3-wmajority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.511,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "dd893a614bf9416140a22515",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.352,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "39995531775f4f4c539a740b",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.318,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "d20bab70664e83599459a14f",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-shared",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": {
+        "_id": "matrix-20261015T051721Z-b25cec-shared",
+        "operation_id": "5fcd4820f689aa92ba92fd5d",
+        "run_id": "matrix-20261015T051721Z-b25cec",
+        "value": "after-election",
+        "written_at": {
+          "$date": {
+            "$numberLong": "1792041458182"
+          }
+        }
+      },
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.423,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "3e0e2f4fb26fd6fb8c060157",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-transition-1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.318,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "ec749f4ab6bbe77c9fe9922b",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-transition-1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.359,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "8936968c75905ecfb194f9a3",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-transition-1",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.348,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "bc4bad6e385319b407ac06d6",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo1",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-transition-majority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo1",
+      "ok": true,
+      "elapsed_ms": 1.298,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo1"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "66e6c9eb5bcbe84a4d25a581",
+      "started_at": "2026-10-15T05:17:48+00:00",
+      "target": "mongo2",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-transition-majority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo2",
+      "ok": true,
+      "elapsed_ms": 1.331,
+      "finished_at": "2026-10-15T05:17:48+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo2"
+    },
+    {
+      "type": "probe",
+      "run_id": "matrix-20261015T051721Z-b25cec",
+      "operation_id": "a5099dfd233a828452ec464f",
+      "started_at": "2026-10-15T05:17:49+00:00",
+      "target": "mongo3",
+      "connection": "directConnection",
+      "observer": "web container",
+      "action": "read",
+      "key": "matrix-20261015T051721Z-b25cec-transition-majority",
+      "value": null,
+      "read_preference": "secondaryPreferred",
+      "read_concern": "majority",
+      "write_concern": "majority",
+      "max_time_ms": 2000,
+      "wtimeout_ms": 2000,
+      "retry_reads": false,
+      "retry_writes": false,
+      "result": null,
+      "server": "mongo3",
+      "ok": true,
+      "elapsed_ms": 1.291,
+      "finished_at": "2026-10-15T05:17:49+00:00",
+      "phase": "recovery",
+      "label": "reconcile-mongo3"
+    }
+  ],
+  "statuses": [
+    {
+      "phase": "normal",
+      "status": {
+        "observed_at": "2026-10-15T05:17:22+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 2.8
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.03
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 0.97
+          }
+        ],
+        "network": null
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:27+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 2.21
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.63
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.4
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:28+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 2.38
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.54
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.51
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:29+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 2.04
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.36
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.37
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:31+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 1.93
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.33
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.39
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:32+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 2.16
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.42
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.46
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:33+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 2.78
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:17+00:00"
+              }
+            ],
+            "elapsed_ms": 1.14
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo3:27017",
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.16
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:34+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              }
+            ],
+            "elapsed_ms": 2.2
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:23+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 1.05
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": null,
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "election",
+      "status": {
+        "observed_at": "2026-10-15T05:17:35+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:35+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:35+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 2.04
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:35+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:35+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 1.45
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": null,
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.34
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "partition-end",
+      "status": {
+        "observed_at": "2026-10-15T05:17:40+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 1.45
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 0.95
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": null,
+            "term": 19,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 0.97
+          }
+        ],
+        "network": {
+          "isolated": "mongo3",
+          "created_at": "2026-10-15T05:17:24.000078+00:00",
+          "nodes": {
+            "mongo1": {
+              "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+              "ip": "172.21.0.2"
+            },
+            "mongo2": {
+              "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+              "ip": "172.21.0.4"
+            },
+            "mongo3": {
+              "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+              "ip": "172.21.0.3"
+            }
+          },
+          "rules_applied": true
+        }
+      }
+    },
+    {
+      "phase": "recovery",
+      "status": {
+        "observed_at": "2026-10-15T05:17:42+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 4.79
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 4.42
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 2.07
+          }
+        ],
+        "network": null
+      }
+    },
+    {
+      "phase": "recovery",
+      "status": {
+        "observed_at": "2026-10-15T05:17:44+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 1.91
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:25+00:00"
+              }
+            ],
+            "elapsed_ms": 1.13
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 2.04
+          }
+        ],
+        "network": null
+      }
+    },
+    {
+      "phase": "recovery",
+      "status": {
+        "observed_at": "2026-10-15T05:17:45+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "(not reachable/healthy)",
+                "health": 0,
+                "optime_date": "1970-01-01T00:00:00+00:00"
+              }
+            ],
+            "elapsed_ms": 1.65
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 1.06
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 0.99
+          }
+        ],
+        "network": null
+      }
+    },
+    {
+      "phase": "recovery",
+      "status": {
+        "observed_at": "2026-10-15T05:17:46+00:00",
+        "observer": "web container (can reach both partitions)",
+        "nodes": [
+          {
+            "node": "mongo1",
+            "reachable": true,
+            "role": "PRIMARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 1.94
+          },
+          {
+            "node": "mongo2",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 1.33
+          },
+          {
+            "node": "mongo3",
+            "reachable": true,
+            "role": "SECONDARY",
+            "reported_primary": "mongo1:27017",
+            "term": 20,
+            "members_from_this_node": [
+              {
+                "name": "mongo1:27017",
+                "state": "PRIMARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo2:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              },
+              {
+                "name": "mongo3:27017",
+                "state": "SECONDARY",
+                "health": 1,
+                "optime_date": "2026-10-15T05:17:39+00:00"
+              }
+            ],
+            "elapsed_ms": 1.26
+          }
+        ],
+        "network": null
+      }
+    }
+  ],
+  "passed": true,
+  "firewall_before": {
+    "mongo1": "-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n",
+    "mongo2": "-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n",
+    "mongo3": "-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n"
+  },
+  "catalog_before": {
+    "products": {
+      "count": 13,
+      "sha256": "566390b39d524c6cc1d7b9e7b672da3296d1ffab9eb08f8e800e1bd69ae14879"
+    },
+    "categories": {
+      "count": 6,
+      "sha256": "1dc6d0f4da925b51a859040f8568f821cdd192df439ca742c0841ea2c08983ab"
+    },
+    "brands": {
+      "count": 2,
+      "sha256": "b4aa63cda0f0457f14ecdb3a47e1d389112252ade697441df068f60a99af2891"
+    }
+  },
+  "process_before": {
+    "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10": {
+      "started_at": "2026-10-13T11:19:22.525887709Z",
+      "restarts": 0
+    },
+    "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e": {
+      "started_at": "2026-10-13T11:19:22.572454876Z",
+      "restarts": 0
+    },
+    "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671": {
+      "started_at": "2026-10-13T11:19:22.528106084Z",
+      "restarts": 0
+    }
+  },
+  "isolated": "mongo3",
+  "partition": {
+    "isolated": "mongo3",
+    "created_at": "2026-10-15T05:17:24.000078+00:00",
+    "nodes": {
+      "mongo1": {
+        "id": "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10",
+        "ip": "172.21.0.2"
+      },
+      "mongo2": {
+        "id": "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e",
+        "ip": "172.21.0.4"
+      },
+      "mongo3": {
+        "id": "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671",
+        "ip": "172.21.0.3"
+      }
+    },
+    "rules_applied": true
+  },
+  "new_primary": "mongo1",
+  "tcp_partition": [
+    {
+      "source": "mongo1",
+      "destination": "mongo2",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "source": "mongo1",
+      "destination": "mongo3",
+      "exit_code": 124,
+      "stderr": ""
+    },
+    {
+      "source": "mongo2",
+      "destination": "mongo1",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "source": "mongo2",
+      "destination": "mongo3",
+      "exit_code": 124,
+      "stderr": ""
+    },
+    {
+      "source": "mongo3",
+      "destination": "mongo1",
+      "exit_code": 124,
+      "stderr": ""
+    },
+    {
+      "source": "mongo3",
+      "destination": "mongo2",
+      "exit_code": 124,
+      "stderr": ""
+    }
+  ],
+  "recovery": {
+    "recovered": true,
+    "at": "2026-10-15T05:17:42.750624+00:00"
+  },
+  "final_operation_ids": {
+    "matrix-20261015T051721Z-b25cec-mongo1-w1": {
+      "mongo1": "886f4c5a2849954bfae31009",
+      "mongo2": "886f4c5a2849954bfae31009",
+      "mongo3": "886f4c5a2849954bfae31009"
+    },
+    "matrix-20261015T051721Z-b25cec-mongo1-wmajority": {
+      "mongo1": "59a7db948b88f6c424a40e02",
+      "mongo2": "59a7db948b88f6c424a40e02",
+      "mongo3": "59a7db948b88f6c424a40e02"
+    },
+    "matrix-20261015T051721Z-b25cec-mongo3-w1": {
+      "mongo1": null,
+      "mongo2": null,
+      "mongo3": null
+    },
+    "matrix-20261015T051721Z-b25cec-mongo3-wmajority": {
+      "mongo1": null,
+      "mongo2": null,
+      "mongo3": null
+    },
+    "matrix-20261015T051721Z-b25cec-shared": {
+      "mongo1": "5fcd4820f689aa92ba92fd5d",
+      "mongo2": "5fcd4820f689aa92ba92fd5d",
+      "mongo3": "5fcd4820f689aa92ba92fd5d"
+    },
+    "matrix-20261015T051721Z-b25cec-transition-1": {
+      "mongo1": null,
+      "mongo2": null,
+      "mongo3": null
+    },
+    "matrix-20261015T051721Z-b25cec-transition-majority": {
+      "mongo1": null,
+      "mongo2": null,
+      "mongo3": null
+    }
+  },
+  "write_outcomes": [
+    {
+      "operation_id": "b6bddc15019c0584bb67d201",
+      "label": "seed-shared",
+      "acknowledged": true,
+      "write_concern": "majority",
+      "outcome": "superseded"
+    },
+    {
+      "operation_id": "24a3b8a94a7fb8a47983a16f",
+      "label": "isolated-write-1",
+      "acknowledged": true,
+      "write_concern": "1",
+      "outcome": "absent-after-recovery"
+    },
+    {
+      "operation_id": "3787e4bfc7787b729a83b094",
+      "label": "isolated-write-majority",
+      "acknowledged": false,
+      "write_concern": "majority",
+      "outcome": "absent-after-recovery"
+    },
+    {
+      "operation_id": "5fcd4820f689aa92ba92fd5d",
+      "label": "update-shared",
+      "acknowledged": true,
+      "write_concern": "majority",
+      "outcome": "present-on-all-nodes"
+    },
+    {
+      "operation_id": "b9b77ac86f47907b147f5109",
+      "label": "mongo3-write-1",
+      "acknowledged": false,
+      "write_concern": "1",
+      "outcome": "absent-after-recovery"
+    },
+    {
+      "operation_id": "ab51e8fb9ad710b58288e22b",
+      "label": "mongo3-write-majority",
+      "acknowledged": false,
+      "write_concern": "majority",
+      "outcome": "absent-after-recovery"
+    },
+    {
+      "operation_id": "886f4c5a2849954bfae31009",
+      "label": "mongo1-write-1",
+      "acknowledged": true,
+      "write_concern": "1",
+      "outcome": "present-on-all-nodes"
+    },
+    {
+      "operation_id": "59a7db948b88f6c424a40e02",
+      "label": "mongo1-write-majority",
+      "acknowledged": true,
+      "write_concern": "majority",
+      "outcome": "present-on-all-nodes"
+    }
+  ],
+  "catalog_after": {
+    "products": {
+      "count": 13,
+      "sha256": "566390b39d524c6cc1d7b9e7b672da3296d1ffab9eb08f8e800e1bd69ae14879"
+    },
+    "categories": {
+      "count": 6,
+      "sha256": "1dc6d0f4da925b51a859040f8568f821cdd192df439ca742c0841ea2c08983ab"
+    },
+    "brands": {
+      "count": 2,
+      "sha256": "b4aa63cda0f0457f14ecdb3a47e1d389112252ade697441df068f60a99af2891"
+    }
+  },
+  "firewall_after": {
+    "mongo1": "-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n",
+    "mongo2": "-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n",
+    "mongo3": "-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n"
+  },
+  "process_after": {
+    "290858d09f472c7f7df76614249337a81e0f358ba162be3d91902fcdcc187a10": {
+      "started_at": "2026-10-13T11:19:22.525887709Z",
+      "restarts": 0
+    },
+    "32a78193df7ae6d44723413b5f4516e046414d0b5cc2605ad4e1d533bfeba69e": {
+      "started_at": "2026-10-13T11:19:22.572454876Z",
+      "restarts": 0
+    },
+    "0fb84a4fd83c454670d9cf212ff6b5ed5507531e6abdf6e30d6ba6ecf9832671": {
+      "started_at": "2026-10-13T11:19:22.528106084Z",
+      "restarts": 0
+    }
+  },
+  "finished_at": "2026-10-15T05:17:50.127172+00:00"
+}
