@@ -10,11 +10,13 @@
 | Script partition/recovery | Đã nghiệm thu runtime | 6 hướng TCP trước/trong/sau partition, election, recovery lặp lại; catalog/firewall/process không đổi |
 | Hướng dẫn người dùng setup | Đã có tài liệu, cụm demo đang chạy | docs/setup.md |
 | Bốn kịch bản CAP và bằng chứng | Đã chạy ma trận đại diện | 43 probe, stale reads, write timeout, rollback w:1, đối soát 7 key trên 3 node; xem docs/cap/matrix-results.md |
-| Báo cáo 5 chương, biểu đồ, hướng dẫn bảo vệ | Chưa hoàn tất | Đã có tài liệu nền/mô hình và bằng chứng thực nghiệm; còn tổng hợp báo cáo |
+| Báo cáo kỹ thuật 5 chương | Đã tổng hợp bản Markdown | docs/report/bao-cao.md; sơ đồ kiến trúc/document, bảng số liệu và nguồn bằng chứng |
+| Hướng dẫn demo/bảo vệ và bản nộp | Chưa hoàn tất | Còn kịch bản trình bày, thông tin sinh viên và định dạng theo mẫu học phần |
 
 Theo yêu cầu mới nhất, hoàn thành một nhiệm vụ rồi dừng để người dùng kiểm tra.
-Nhiệm vụ vừa hoàn tất: chạy ma trận đọc/ghi CAP ngày 2026-10-15; xem
-[kết quả, bằng chứng và giới hạn](cap/matrix-results.md). Đã recovery; dừng để người dùng kiểm tra.
+Nhiệm vụ vừa hoàn tất: tổng hợp [báo cáo kỹ thuật 5 chương](report/bao-cao.md).
+Chỉ cập nhật tài liệu, không chạy thêm partition hoặc thay đổi dữ liệu. Dừng để người dùng kiểm tra.
+Kết quả nhiệm vụ trước: [ma trận CAP và giới hạn](cap/matrix-results.md).
 Bài kiểm thử mạng trước đó: [partition/recovery](cap/network-validation.md).
 
 Smoke CAP ngày 2026-10-13: ghi majority thành công; cả mongo1/mongo2/mongo3 đọc
