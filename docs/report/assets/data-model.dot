@@ -1,0 +1,15 @@
+digraph model {
+  graph [rankdir=LR,bgcolor="white",pad="0.3"];
+  node [shape=box,style="rounded,filled",fillcolor="#eef4fa",fontname="Arial",fontsize=13,color="#31516d"];
+  edge [fontname="Arial",fontsize=11,color="#63758a"];
+  products [label="products\n_id • name • slug\nDecimal128 price / effective_price\ncategory_id • brand_id • version"];
+  categories [label="categories\n_id • name • slug • parent_id"];
+  brands [label="brands\n_id (hash tên) • name"];
+  images [label="images[] embedded\nid • image_url\nis_primary • sort_order\ntối đa 100",fillcolor="#e6f4e8"];
+  variants [label="variants[] embedded\nid • size • color • sku\ntối đa 200 • không chứa stock",fillcolor="#e6f4e8"];
+  products -> categories [label="reference (tùy chọn)"];
+  products -> brands [label="reference (tùy chọn)"];
+  products -> images [label="nhúng"];
+  products -> variants [label="nhúng"];
+  categories -> categories [label="parent_id"];
+}

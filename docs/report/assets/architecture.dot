@@ -1,0 +1,19 @@
+digraph architecture {
+  graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.35"];
+  node [shape=box, style="rounded,filled", fillcolor="#eef4fa", color="#31516d", fontname="Arial", fontsize=13];
+  edge [color="#63758a", fontname="Arial", fontsize=10];
+  browser [label="Trình duyệt • localhost:8010"];
+  web [label="PHP MVC / Apache"];
+  catalog [label="Catalog service / repository"];
+  rs [label="MongoDB rsCatalog\n3 node: Primary + 2 Secondary", fillcolor="#e6f4e8"];
+  events [label="catalog_events"];
+  sync [label="SQL projection / CLI retry"];
+  sql [label="MySQL demo\nstock / user / cart / order / payment",fillcolor="#fff2d9"];
+  cap [label="CAP Dashboard / probe\ncap_demo.probes"];
+  network [label="Terminal: network.py\nFirewall local demo"];
+  browser -> web; web -> catalog; catalog -> rs;
+  rs -> events; events -> sync; sync -> sql;
+  web -> sql [label="nghiệp vụ SQL"];
+  web -> cap; cap -> rs;
+  network -> rs [style=dashed,label="partition / recovery"];
+}

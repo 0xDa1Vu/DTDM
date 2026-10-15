@@ -1,4 +1,4 @@
-# Tiến độ đồ án — kiểm tra từng nhiệm vụ
+# Tiến độ đồ án — bàn giao
 
 | Nhiệm vụ | Trạng thái | Kiểm tra đã chạy |
 |---|---|---|
@@ -10,14 +10,16 @@
 | Script partition/recovery | Đã nghiệm thu runtime | 6 hướng TCP trước/trong/sau partition, election, recovery lặp lại; catalog/firewall/process không đổi |
 | Hướng dẫn người dùng setup | Đã có tài liệu, cụm demo đang chạy | docs/setup.md |
 | Bốn kịch bản CAP và bằng chứng | Đã chạy ma trận đại diện | 43 probe, stale reads, write timeout, rollback w:1, đối soát 7 key trên 3 node; xem docs/cap/matrix-results.md |
-| Báo cáo kỹ thuật 5 chương | Đã tổng hợp bản Markdown | docs/report/bao-cao.md; sơ đồ kiến trúc/document, bảng số liệu và nguồn bằng chứng |
-| Hướng dẫn demo/bảo vệ và bản nộp | Chưa hoàn tất | Còn kịch bản trình bày, thông tin sinh viên và định dạng theo mẫu học phần |
+| Báo cáo kỹ thuật 5 chương | Xong bản Markdown, Word, PDF và HTML | 5 chương, 2 sơ đồ, bảng số liệu, nguồn bằng chứng |
+| Hướng dẫn demo và bảo vệ | Xong | Kịch bản 12–15 phút, xử lý sự cố, 20 câu hỏi, 12 slide HTML/PDF |
+| Kiểm tra bàn giao | Xong | Web/CAP smoke chạy lại; kiểm tra liên kết, DOCX/HTML/PDF |
+| Cá nhân hóa bản nộp | Người nộp bổ sung | Họ tên/MSSV/lớp/giảng viên và mẫu chính thức của học phần chưa được cung cấp |
 
-Theo yêu cầu mới nhất, hoàn thành một nhiệm vụ rồi dừng để người dùng kiểm tra.
-Nhiệm vụ vừa hoàn tất: tổng hợp [báo cáo kỹ thuật 5 chương](report/bao-cao.md).
-Chỉ cập nhật tài liệu, không chạy thêm partition hoặc thay đổi dữ liệu. Dừng để người dùng kiểm tra.
-Kết quả nhiệm vụ trước: [ma trận CAP và giới hạn](cap/matrix-results.md).
-Bài kiểm thử mạng trước đó: [partition/recovery](cap/network-validation.md).
+Theo yêu cầu mới nhất, đã hoàn thiện các phần còn lại mà không dừng xin duyệt từng nhiệm vụ.
+[Bộ tài liệu bàn giao](report/README.md) có hướng dẫn dùng bản xuất và danh mục file.
+[Kiểm tra cuối](report/handover-checks.md) chỉ chạy web/CAP smoke, không chạy lại partition.
+Bằng chứng trước: [ma trận CAP](cap/matrix-results.md), [kiểm thử mạng](cap/network-validation.md).
+Các hướng phát triển production ở Chương 5 không được tính là đã triển khai.
 
 Smoke CAP ngày 2026-10-13: ghi majority thành công; cả mongo1/mongo2/mongo3 đọc
 đúng operation_id. Anonymous bị chuyển login; target không hợp lệ và kết hợp

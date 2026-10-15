@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi" xml:lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10.2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DTDM — demo-guide</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+<style>
+body{font-family:Arial,sans-serif;line-height:1.6;color:#172b40;max-width:1050px;margin:32px auto;padding:0 25px}
+h1,h2,h3{line-height:1.25;color:#183d5b}h2{margin-top:2em;border-bottom:2px solid #dbe6ef;padding-bottom:.3em}
+table{border-collapse:collapse;width:100%;font-size:.92em;margin:1em 0}td,th{border:1px solid #ccd7df;padding:8px;text-align:left}th{background:#eef4fa}
+pre{white-space:pre-wrap;background:#f3f6f9;padding:12px}code{font-size:.9em}img{max-width:100%;height:auto}a{color:#14608e}
+@media print{body{max-width:none;margin:0;padding:0;font-size:11pt}h2{break-before:page}h2,h3{break-after:avoid}img,tr{break-inside:avoid}a{color:inherit}nav{display:none}}
+@page{size:A4;margin:20mm}
+</style>
+</head>
+<body>
+<section id="hướng-dẫn-demo-và-bảo-vệ" class="level1">
+<h1>Hướng dẫn demo và bảo vệ</h1>
+<p>Thời lượng đề xuất: 12–15 phút. Dùng Docker demo trên máy hiện tại,
+không import lại database. Mục tiêu là chứng minh website dùng catalog
+MongoDB, quan sát partition thật và giải thích kết quả bằng
+operation_id.</p>
+<section id="chuẩn-bị-trước-buổi-trình-bày" class="level2">
+<h2>1. Chuẩn bị trước buổi trình bày</h2>
+<p>Mở Docker Desktop. Chạy tại thư mục repository DTDM:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> scripts/demo.sh up <span class="at">-d</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> scripts/demo.sh ps</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> scripts/demo.sh exec <span class="at">-T</span> web php scripts/cap/probe.php status</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/cap/network.py inspect</span></code></pre></div>
+<p>Cần thấy ba node reachable, một Primary và hai Secondary;
+<code>network</code> là null; firewall không có chain DTDM_CAP. Nếu còn
+partition từ lần thử của chính mình, chạy recovery rồi kiểm tra lại.
+Không chạy đồng thời với người khác đang thử cluster.</p>
+<p>Website: http://localhost:8010. Admin demo:
+<code>admin@shop.test</code> / <code>admin123</code>. Mở sẵn trang sản
+phẩm, <code>/admin/cap</code>, <a
+href="https://github.com/0xDa1Vu/DTDM/blob/main/docs/cap/matrix-results.md">bảng
+kết quả đã lưu</a> và <a
+href="https://github.com/0xDa1Vu/DTDM/blob/main/docs/report/bao-cao.md">báo
+cáo</a>. Có thể chạy kiểm tra trước buổi demo:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tests/web-smoke.py</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tests/cap-smoke.py</span></code></pre></div>
+<p>CAP smoke tạo probe riêng nhưng không partition. Đừng dùng
+<code>docker compose up</code> không chỉ định file:
+<code>docker-compose.yml</code> là cấu hình cũ ở port 8000;
+<code>scripts/demo.sh</code> chọn đúng demo 8010. Không dùng
+<code>down -v</code>, không chuyển tiền theo QR demo.</p>
+</section>
+<section id="kịch-bản-trình-bày-1215-phút" class="level2">
+<h2>2. Kịch bản trình bày 12–15 phút</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Thời gian</th>
+<th>Thao tác</th>
+<th>Ý cần nói</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–2 phút</td>
+<td>Trang sản phẩm, tìm kiếm/lọc, admin sản phẩm</td>
+<td>Tái sử dụng website PHP; catalog MongoDB, giao dịch SQL</td>
+</tr>
+<tr>
+<td>2–4 phút</td>
+<td>Mô hình document và sơ đồ kiến trúc</td>
+<td>Ảnh/biến thể nhúng; category/brand reference; stock ở MySQL</td>
+</tr>
+<tr>
+<td>4–5 phút</td>
+<td>Dashboard, ba vai trò node</td>
+<td>Primary là vai trò động; web observer nhìn được cả hai phía</td>
+</tr>
+<tr>
+<td>5–10 phút</td>
+<td>Partition, ghi/đọc, recovery theo phần 3</td>
+<td>So sánh kết quả và operation_id, không chỉ nhìn HTTP status</td>
+</tr>
+<tr>
+<td>10–12 phút</td>
+<td>JSON và log rollback từ lần thực nghiệm đã lưu</td>
+<td>w:1 có thể rollback; timeout chưa xác định kết quả cuối</td>
+</tr>
+<tr>
+<td>12–15 phút</td>
+<td>Kết luận, giới hạn và câu hỏi</td>
+<td>Một lần demo hữu hạn; không gán MongoDB luôn CP/AP</td>
+</tr>
+</tbody>
+</table>
+<p>Để xem document trực tiếp, dùng URI replica set để không phụ thuộc
+mongo1 đang giữ vai trò gì:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> scripts/demo.sh exec mongo1 mongosh <span class="st">&#39;mongodb://mongo1:27017,mongo2:27017,mongo3:27017/catalog_demo?replicaSet=rsCatalog&#39;</span></span></code></pre></div>
+<p>Trong mongosh chạy <code>db.products.findOne()</code> và
+<code>db.products.getIndexes()</code>, sau đó <code>exit</code>. Chỉ xem
+dữ liệu; không sửa/xóa bằng tay.</p>
+</section>
+<section id="demo-thao-tác-từng-bước-trên-dashboard" class="level2">
+<h2>3. Demo thao tác từng bước trên Dashboard</h2>
+<section id="bước-a-bình-thường" class="level3">
+<h3>Bước A — Bình thường</h3>
+<ol type="1">
+<li>Ghi lại tên Primary hiện tại, gọi là <strong>P cũ</strong>. Dùng
+run_id mới, ví dụ <code>defense-20261015-01</code> (đổi suffix mỗi
+lần).</li>
+<li>Trong form chọn Replica Set, Ghi, write concern majority, key
+<code>defense-20261015-01-shared</code>, value <code>before</code>.</li>
+<li>Ghi lại operation_id của lệnh ghi, gọi là <strong>ID
+trước</strong>.</li>
+<li>Đọc cùng key lần lượt ở mongo1, mongo2, mongo3 bằng
+secondaryPreferred + majority. Chỉ chuyển bước khi cả ba đọc được ID
+trước; nếu chưa đồng bộ, đọc lại.</li>
+</ol>
+<p>Read preference/read concern chỉ áp dụng cho đọc; write concern chỉ
+áp dụng cho ghi. Giá trị probe là chuỗi thử nghiệm, không làm thay đổi
+giá sản phẩm thật.</p>
+</section>
+<section id="bước-b-partition-và-election" class="level3">
+<h3>Bước B — Partition và election</h3>
+<p>Chạy lệnh Dashboard gợi ý cho <strong>P cũ</strong>. Ví dụ dưới chỉ
+đúng khi P cũ đang là mongo1:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/cap/network.py partition mongo1</span></code></pre></div>
+<p>Theo dõi Dashboard đến khi phía hai node có Primary mới (<strong>P
+mới</strong>) và P cũ không còn Primary. Đợi theo trạng thái thực, không
+đếm đúng 10 giây rồi mặc định election xong. Nếu sau khoảng 90 giây chưa
+ổn định, recovery, lưu lỗi và chuyển sang bằng chứng đã có.</p>
+<p>Script chặn liên lạc MongoDB hai chiều bằng firewall; không dừng
+container. Web vẫn nhìn thấy node cô lập. Reachable từ web không có
+nghĩa node đó liên lạc được với các peer.</p>
+</section>
+<section id="bước-c-so-sánh-hai-phía" class="level3">
+<h3>Bước C — So sánh hai phía</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Target</th>
+<th>Thao tác/cấu hình</th>
+<th>Cách quan sát</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P mới</td>
+<td>Ghi majority, cùng key shared, value <code>after</code></td>
+<td>Chờ OK và ghi lại <strong>ID sau</strong></td>
+</tr>
+<tr>
+<td>P mới</td>
+<td>Đọc primary + linearizable</td>
+<td>Đối chiếu ID sau</td>
+</tr>
+<tr>
+<td>P cũ</td>
+<td>Đọc secondaryPreferred + local</td>
+<td>Đối chiếu với ID trước/ID sau</td>
+</tr>
+<tr>
+<td>P cũ</td>
+<td>Đọc secondaryPreferred + majority</td>
+<td>Có thể đọc giá trị đã commit trước partition nhưng đã cũ</td>
+</tr>
+<tr>
+<td>P cũ</td>
+<td>Đọc primary + linearizable</td>
+<td>Sau stepdown không đáp ứng linearizable read</td>
+</tr>
+<tr>
+<td>P cũ</td>
+<td>Ghi w:1 vào key mới <code>defense-20261015-01-isolated</code></td>
+<td>Sau stepdown không được phép ghi</td>
+</tr>
+</tbody>
+</table>
+<p>Phải có một ghi mới được majority xác nhận trước khi kết luận một lần
+đọc là stale. Nếu lệnh ghi báo timeout, không coi mặc nhiên là chưa ghi;
+giữ operation_id và đối soát sau recovery. Để thử lại, dùng key riêng
+hoặc ghi rõ lần ghi đè để tránh báo nhầm mất dữ liệu.</p>
+<p>Cửa sổ P cũ còn nhận w:1 sau khi cắt mạng có thể rất ngắn; thao tác
+tay không bảo đảm bắt được. Không chỉnh timeout/election để ép kết quả
+khi đang bảo vệ. Dùng runner hoặc bằng chứng đã lưu để trình bày
+rollback.</p>
+</section>
+<section id="bước-d-recovery" class="level3">
+<h3>Bước D — Recovery</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/cap/network.py recover</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> scripts/demo.sh exec <span class="at">-T</span> web php scripts/cap/probe.php status</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/cap/network.py inspect</span></code></pre></div>
+<p>Chờ một Primary/hai Secondary và network=null. Đọc majority cùng key
+trên cả ba node, đối chiếu ID sau. Với các key ghi lỗi, kiểm tra có tồn
+tại operation_id không. Nhấn <strong>Tải log JSONL</strong> trên
+Dashboard. Không yêu cầu Primary cũ phải giành lại vai trò.</p>
+</section>
+</section>
+<section id="chạy-tự-động-để-thu-bằng-chứng-mới" class="level2">
+<h2>4. Chạy tự động để thu bằng chứng mới</h2>
+<p>Khi không có partition đang bật:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tests/cap-matrix.py</span></code></pre></div>
+<p>Runner tự chọn Primary, thử trước/trong/sau partition và đối soát bảy
+key trên ba node. Nó in đường dẫn
+<code>storage/cap/matrix-&lt;UTC&gt;-&lt;suffix&gt;.json</code>. Số
+probe có thể thay đổi do polling/retry có ghi log; không yêu cầu mọi lần
+đều đúng 43 probe hoặc cùng node/độ trễ với lần đã lưu.</p>
+<p>PASS nghĩa là các assertion và recovery đạt trong lần đó. Một ghi lỗi
+dự kiến vẫn có thể nằm trong lần PASS. Nếu FAIL, giữ JSON, kiểm tra
+<code>error</code>/<code>recovery_error</code>, không xóa bằng chứng
+hoặc gọi đó là kết quả thành công. <code>finally</code> cố gắng
+recovery; khi terminal bị kill cưỡng bức hoặc Docker mất kết nối, chạy
+lệnh recovery sau khi Docker hoạt động lại.</p>
+</section>
+<section id="phương-án-khi-demo-trực-tiếp-gặp-sự-cố" class="level2">
+<h2>5. Phương án khi demo trực tiếp gặp sự cố</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Hiện tượng</th>
+<th>Xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker chưa chạy</td>
+<td>Mở/Resume Docker Desktop, chạy lại ps; không xóa volume</td>
+</tr>
+<tr>
+<td>Port 8010 bị chiếm</td>
+<td>Kiểm tra tiến trình/stack đang dùng; không tự kill dịch vụ không rõ
+nguồn</td>
+</tr>
+<tr>
+<td>Dashboard yêu cầu đăng nhập</td>
+<td>Đăng nhập admin demo; không tắt kiểm tra quyền/CSRF</td>
+</tr>
+<tr>
+<td>UNKNOWN / không có Primary</td>
+<td>Ghi lại trạng thái, recovery nếu partition do mình tạo; xem log
+container</td>
+</tr>
+<tr>
+<td>Ghi báo timeout</td>
+<td>Lưu operation_id, đối soát sau recovery; không tuyên bố chắc chắn
+mất/không ghi</td>
+</tr>
+<tr>
+<td>Không bắt được rollback w:1</td>
+<td>Trình bày bằng chứng ngày 15/10/2026, nói rõ đây là lần chạy
+trước</td>
+</tr>
+<tr>
+<td>Mất mạng Internet</td>
+<td>Dùng tài liệu HTML/DOCX đã xuất và môi trường Docker đã build; không
+rebuild giữa buổi</td>
+</tr>
+</tbody>
+</table>
+<p>Nếu không chạy được live, nói rõ sự cố và dùng JSON/log đã lưu; không
+trình bày tài liệu cũ như kết quả đang chạy. Khi kết thúc, luôn kiểm tra
+recovery và website.</p>
+</section>
+<section id="danh-sách-minh-chứng-cần-trình-bày" class="level2">
+<h2>6. Danh sách minh chứng cần trình bày</h2>
+<ul>
+<li>Trang sản phẩm và document tương ứng: cho thấy website dùng catalog
+NoSQL.</li>
+<li>Vai trò ba node trước/trong/sau partition.</li>
+<li>ID trước và ID sau để giải thích stale read.</li>
+<li>Ghi w:1 bị rollback trong <a
+href="https://github.com/0xDa1Vu/DTDM/blob/main/docs/cap/evidence/matrix-20261015T051721Z-b25cec.json">JSON
+hoàn chỉnh</a> và <a
+href="https://github.com/0xDa1Vu/DTDM/blob/main/docs/cap/evidence/matrix-20261015T051721Z-b25cec-environment.json">log
+MongoDB</a>.</li>
+<li>Lần ghi timeout nhưng sau recovery có dữ liệu trong <a
+href="https://github.com/0xDa1Vu/DTDM/blob/main/docs/cap/evidence/matrix-20261015T051633Z-e52a6a.json">lần
+chạy đầu</a>; giải thích lỗi assertion cũ theo <a
+href="https://github.com/0xDa1Vu/DTDM/blob/main/docs/cap/matrix-results.md">matrix-results.md</a>.</li>
+</ul>
+<p>Ảnh chụp trong buổi bảo vệ có thể bổ sung cho dễ xem, nhưng không
+thay thế JSON và operation_id. Bộ bàn giao hiện không giả lập ảnh chụp
+màn hình như minh chứng thật.</p>
+</section>
+</section>
+</body>
+</html>

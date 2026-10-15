@@ -260,7 +260,7 @@ Runner được sửa để xác định ghi đè qua operation_id thực tế v
 | Replica Set và partition thật | Có 3 node, firewall hai chiều và recovery đã kiểm tra |
 | Thí nghiệm CAP | Có một ma trận đại diện hoàn chỉnh, một lần chưa hoàn tất được công khai |
 | Dashboard | Có trạng thái, probe, thời gian, log/export và hướng dẫn terminal |
-| Báo cáo | Có 5 chương và liên kết bằng chứng; chưa xuất bản nộp theo mẫu trường |
+| Báo cáo | Có 5 chương, bằng chứng, bản Word/PDF/HTML; cần bổ sung thông tin cá nhân và áp dụng mẫu trường |
 
 ### 5.2. Kết luận từ phạm vi đã thử
 
