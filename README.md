@@ -9,9 +9,8 @@ Set 3 node; MySQL giữ tồn kho, đơn hàng và thanh toán. Môi trường d
 - [Mô hình NoSQL và đồng bộ giao dịch](docs/nosql/catalog-design.md)
 - [Backup và migration](docs/nosql/local-demo.md)
 - [CAP Dashboard](docs/cap/dashboard.md)
-- [Bộ tài liệu bàn giao: báo cáo Word/PDF, slide, hướng dẫn demo](docs/report/README.md)
 - [Báo cáo đồ án 5 chương — nguồn Markdown](docs/report/bao-cao.md)
-- [Hướng dẫn demo](docs/report/demo-guide.md) · [Câu hỏi bảo vệ](docs/report/defense-qa.md) · [Nội dung slide](docs/report/slides.md)
+- [Nội dung slide tham khảo](docs/report/slides.md)
 
 **Đã chạy bốn giai đoạn CAP với ma trận đọc/ghi đại diện: [kết quả thực tế và giới hạn](docs/cap/matrix-results.md). Đã recovery cụm demo.**
 

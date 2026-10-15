@@ -22,3 +22,9 @@ Thumbs.db
 /node_modules/
 __pycache__/
 *.pyc
+
+# Personal report exports and defense materials (local only)
+/docs/report/output/
+/docs/report/demo-guide.md
+/docs/report/defense-qa.md
+/scripts/export-report.py
