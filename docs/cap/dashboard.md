@@ -32,8 +32,9 @@ Smoke chỉ kiểm tra Dashboard, quyền truy cập, ghi majority và đọc b�
 
 ## Lệnh chuẩn bị cho thí nghiệm sau
 
-Các lệnh dưới đây **chưa được chạy kiểm chứng partition/recovery trong nhiệm vụ
-Dashboard**. Người dùng yêu cầu dừng để học setup trước khi thực nghiệm.
+Các lệnh đã được kiểm chứng trên Docker demo ngày 2026-10-15; xem
+[kết quả và cách chạy lại](network-validation.md). Chỉ chạy khi không có người
+khác đang thay đổi cluster hoặc chạy thực nghiệm.
 
 ```bash
 # Xem Primary hiện tại trước; thay mongo1 nếu vai trò đã đổi.
@@ -44,8 +45,8 @@ python3 scripts/cap/network.py recover
 
 Script không dừng tiến trình mongod. Recovery chỉ xoá chain DTDM_CAP, không flush
 firewall chung. Các kiểm tra container label/network hạn chế tác động vào stack
-khác. Vẫn cần kiểm thử thực tế tính đối xứng partition, election, timeout và
-recovery trước khi coi đây là công cụ thực nghiệm đã nghiệm thu.
+khác. Đã kiểm thử partition hai chiều, election và recovery. Timeout TCP đã
+được kiểm tra; ma trận timeout/thành công của thao tác đọc/ghi còn ở nhiệm vụ sau.
 
 ## Cách diễn giải
 
